@@ -7,10 +7,10 @@ public class EnemySpawner : MonoBehaviour
     [Header("Enemy Create Info")]
     private float createTime = 1.5f;    //몬스터 생성 시간
 
-    public int enemyNum;
+    int enemyNum;
     public int currEnemy;
     public int maxEnemy;
-    public int genCount;                //한 왜이브에 생성된 오브젝트의 수 
+    public int genCount;                //한 왜이브에 생성된 오브젝트의 수
     public int genCountLimit;           //한 웨이브에 생성될수 있는 오브젝트의 수
 
     [Header("Object Pool")]

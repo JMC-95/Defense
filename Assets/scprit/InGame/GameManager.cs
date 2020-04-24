@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private float pastTime = 0.0f;
     private float waveDelay = 3.0f;
 
+    public int enemyType;
     public int waveCount;
     public bool isWaveEnd = false;
     public bool isGameOver = false;
@@ -43,16 +44,18 @@ public class GameManager : MonoBehaviour
         {
             enemySpawner[i] = enemyObj[i].GetComponent<EnemySpawner>();
         }
-        waveCount = 0;
 
-        StartCoroutine(enemySpawner[1].CreateEnemy());
+        waveCount = 0;
+        enemyType = 0;
+
+        StartCoroutine(enemySpawner[enemyType].CreateEnemy());
     }
 
     void Update()
     {
         if (!isWaveEnd)
         {
-            if (enemySpawner[0].genCount >= enemySpawner[0].genCountLimit)
+            if (enemySpawner[enemyType].genCount >= enemySpawner[enemyType].genCountLimit)
             {
                 if (GameObject.FindGameObjectsWithTag("ENEMY").Length == 0)
                 {
@@ -66,10 +69,15 @@ public class GameManager : MonoBehaviour
 
             if (pastTime > waveDelay)
             {
-                waveCount += 1;
-                enemySpawner[0].genCount = 0;
                 isWaveEnd = false;
+
+                enemySpawner[enemyType].genCount = 0;
                 pastTime = 0.0f;
+                waveCount += 1;
+                enemyType += 1;
+
+                if (enemyType > 2) enemyType = 0;
+                StartCoroutine(enemySpawner[enemyType].CreateEnemy());
             }
         }
     }

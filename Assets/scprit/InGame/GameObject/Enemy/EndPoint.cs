@@ -16,13 +16,12 @@ public class EndPoint : MonoBehaviour
         var swordman = GameObject.Find("SwordmanSpawner");
 
         enemyObj = new GameObject[3] { archer, mage, swordman };
+        enemySpawnerScript = new EnemySpawner[3];
 
-        enemySpawnerScript = new EnemySpawner[3]
+        for (int i = 0; i < enemyObj.Length; ++i)
         {
-            enemyObj[0].GetComponent<EnemySpawner>(),
-            enemyObj[1].GetComponent<EnemySpawner>(),
-            enemyObj[2].GetComponent<EnemySpawner>()
-        };
+            enemySpawnerScript[i] = enemyObj[i].GetComponent<EnemySpawner>();
+        }
     }
 
     void OnCollisionEnter(Collision other)
@@ -37,7 +36,7 @@ public class EndPoint : MonoBehaviour
             enemySpawnerScript[1].currEnemy -= 1;
             other.gameObject.SetActive(false);
         }
-        else
+        else if (other.collider.tag == enemyTag && other.collider.name == "Swordman")
         {
             enemySpawnerScript[2].currEnemy -= 1;
             other.gameObject.SetActive(false);
