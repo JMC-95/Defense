@@ -31,7 +31,7 @@ public class ArrowSpawn : MonoBehaviour
                     if (arrow != null)
                     {
                         arrow.transform.position = firePos.position;                    //미사일 생성 포지션
-                        arrow.transform.rotation = bullet.transform.rotation;           //미사일 생성 회전값
+                        arrow.transform.rotation = target.transform.rotation;           //미사일 생성 회전값
                         arrow.GetComponent<Arrow>().m_target = target;                  //미사일에게 타겟 전달
                         //arrow.GetComponent<Rigidbody>().velocity = Vector3.up * 5f;     //미사일에게 위로 뜨게하는 힘을 가함
                         arrow.SetActive(true);
