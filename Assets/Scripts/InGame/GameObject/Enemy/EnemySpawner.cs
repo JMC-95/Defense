@@ -53,6 +53,13 @@ public class EnemySpawner : MonoBehaviour
                 {
                     var enemy = GetEnemy();
 
+                    if (enemy.name == "Archer")
+                    {
+                        var enemyDamage = enemy.GetComponent<EnemyDamage>();
+                        enemyDamage.SetHpBar();
+                    }
+
+
                     SetToUnit(enemy);
                     currEnemy += 1;
                     genCount += 1;

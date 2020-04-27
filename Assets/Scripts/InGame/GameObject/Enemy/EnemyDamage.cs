@@ -1,27 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyDamage : MonoBehaviour
 {
-    public float hp = 100.0f;
-    private float initHp = 100.0f;
+    public int hp;
+    public int initHp;
 
     public GameObject hpBarPrefab;
+    public GameObject hpBar;
     public Vector3 hpBarOffset = new Vector3(-0.2f, 5.5f, 0);
+
     private Canvas uiCanvas;
     private Image hpBarImage;
+    private GameManager gameManager;
 
-    void Start()
+    public void SetHpBar()
     {
-        SetHpBar();
-    }
+        if (!gameManager)
+        {
+            gameManager = GameManager.Get();
+        }
 
-    void SetHpBar()
-    {
+        initHp = GetComponent<EnemyScript>().eachTurnHpMax[gameManager.curRound];
+        hp = initHp;
+
         uiCanvas = GameObject.Find("UI Canvas").GetComponent<Canvas>();
-        GameObject hpBar = Instantiate<GameObject>(hpBarPrefab, uiCanvas.transform);
+        hpBar = Instantiate<GameObject>(hpBarPrefab, uiCanvas.transform);
         hpBarImage = hpBar.GetComponentsInChildren<Image>()[1];
 
         var _hpBar = hpBar.GetComponent<EnemyHpBar>();
@@ -35,23 +39,17 @@ public class EnemyDamage : MonoBehaviour
         {
             coll.gameObject.SetActive(false);
             hp -= coll.gameObject.GetComponent<Arrow>().damage;
-            hpBarImage.fillAmount = hp / initHp;
+            hpBarImage.fillAmount = hp / (float)initHp;
 
             if (hp <= 0.0f)
             {
-                hpBarImage.GetComponentsInParent<Image>()[1].color = Color.clear;
+                Destroy(hpBar);
             }
         }
 
         if (coll.collider.tag == "LastPoint")
         {
-            hp -= coll.gameObject.GetComponent<EndPoint>().damage;
-            hpBarImage.fillAmount = hp / initHp;
-
-            if (hp <= 0.0f)
-            {
-                hpBarImage.GetComponentsInParent<Image>()[1].color = Color.clear;
-            }
+            Destroy(hpBar);
         }
     }
 }

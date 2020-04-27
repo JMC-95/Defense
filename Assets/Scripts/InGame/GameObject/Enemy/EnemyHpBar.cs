@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHpBar : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class EnemyHpBar : MonoBehaviour
     [HideInInspector] public Vector3 offset = Vector3.zero;
     [HideInInspector] public Transform targetTr;
 
+    public float fillAmount;
+
     void Start()
     {
         canvas = GetComponentInParent<Canvas>();
@@ -22,6 +25,8 @@ public class EnemyHpBar : MonoBehaviour
 
     void LateUpdate()
     {
+        fillAmount = GetComponentsInChildren<Image>()[1].fillAmount;
+
         var screenPos = Camera.main.WorldToScreenPoint(targetTr.position + offset);
 
         if (screenPos.z < 0.0f)

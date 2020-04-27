@@ -11,12 +11,24 @@ public class GameManager : MonoBehaviour
 
     private float pastTime = 0.0f;
     private float waveDelay = 3.0f;
+    public int roundMax = 10;
+    public int curRound = 0;
+
 
     public int enemyType;
     public int waveCount;
     public bool isWaveEnd = false;
     public bool isGameOver = false;
     public bool isNextWave = false;
+
+    static public GameManager Get()
+    {
+        if(!instance)
+        {
+            return instance = new GameManager();
+        }
+        return instance;
+    }
 
     void Awake()
     {
@@ -77,8 +89,16 @@ public class GameManager : MonoBehaviour
                 waveCount += 1;
                 enemyType += 1;
 
-                if (enemyType > 2) enemyType = 0;
-                StartCoroutine(enemySpawner[enemyType].CreateEnemy());
+                if(curRound < roundMax)
+                {
+                    curRound += 1;
+                    if (enemyType > 2) enemyType = 0;
+                    StartCoroutine(enemySpawner[enemyType].CreateEnemy());
+                }
+                else
+                {
+                    Debug.Log("Game End!!");
+                }
             }
         }
     }

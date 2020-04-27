@@ -15,7 +15,7 @@ public class EnemyMove : MonoBehaviour
         iTween.DrawPath(archerPath);
         iTween.DrawPath(magePath);
         iTween.DrawPath(swordmanPath);
-    }
+    }   
 
     public void Init(int arrNum)
     {
