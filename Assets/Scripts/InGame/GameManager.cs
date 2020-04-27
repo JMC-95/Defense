@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public int waveCount;
     public bool isWaveEnd = false;
     public bool isGameOver = false;
+    public bool isNextWave = false;
 
     void Awake()
     {

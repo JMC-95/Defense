@@ -75,13 +75,13 @@ public class ObjectSelector : MonoBehaviour
         return targetScreenPos;
     }
 
-    
+
     // Update is called once per frame
     void Update()
     {
         bool SelectBuildPositon = false;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
         {
             GameObject target = null;
 
@@ -89,7 +89,7 @@ public class ObjectSelector : MonoBehaviour
             var rayCastList = Physics.RaycastAll(ray);
             Vector3 hitPoint = nonePos;
 
-            for(int i = 0; i < rayCastList.Length; ++i)
+            for (int i = 0; i < rayCastList.Length; ++i)
             {
                 target = rayCastList[i].collider.gameObject;
                 var targetName = target.name;

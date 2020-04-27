@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+    public float damage = 25.0f;
     public GameObject m_target = null;                      //타겟
     public Vector3 targetPosition = Vector3.zero;           //타겟의 위치
 

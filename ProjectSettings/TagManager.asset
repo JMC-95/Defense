@@ -7,6 +7,8 @@ TagManager:
   - LastPoint
   - Enemy
   - Button1
+  - ENEMY
+  - Bullet
   layers:
   - Default
   - TransparentFX

@@ -38,13 +38,13 @@ public class EnemyMove : MonoBehaviour
         switch (arrNum)
         {
             case 0:
-                iTween.MoveTo(gameObject, iTween.Hash("path", archerPath, "speed", 50, "orienttopath", true, "looktime", 0.6, "easetype", iTween.EaseType.linear, "movetopath", true));
+                iTween.MoveTo(gameObject, iTween.Hash("path", archerPath, "speed", 10, "orienttopath", true, "looktime", 0.6, "easetype", iTween.EaseType.linear, "movetopath", true));
                 break;
             case 1:
-                iTween.MoveTo(gameObject, iTween.Hash("path", magePath, "speed", 50, "orienttopath", true, "looktime", 0.6, "easetype", iTween.EaseType.linear, "movetopath", true));
+                iTween.MoveTo(gameObject, iTween.Hash("path", magePath, "speed", 30, "orienttopath", true, "looktime", 0.6, "easetype", iTween.EaseType.linear, "movetopath", true));
                 break;
             case 2:
-                iTween.MoveTo(gameObject, iTween.Hash("path", swordmanPath, "speed", 50, "orienttopath", true, "looktime", 0.6, "easetype", iTween.EaseType.linear, "movetopath", true));
+                iTween.MoveTo(gameObject, iTween.Hash("path", swordmanPath, "speed", 30, "orienttopath", true, "looktime", 0.6, "easetype", iTween.EaseType.linear, "movetopath", true));
                 break;
         }
     }
