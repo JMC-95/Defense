@@ -7,6 +7,8 @@ public class GenTower : MonoBehaviour
     ObjectSelector objectSelector;
     GameObject ButtonSellector;
     UiManager UiManager;
+    GameObject GenTowers;
+    GameManager gameManager;
 
     public GameObject[] towers;
 
@@ -15,6 +17,7 @@ public class GenTower : MonoBehaviour
         var Camera = GameObject.Find("MainCamera");
         var Canvas = GameObject.Find("Canvas");
         var uiManager = GameObject.Find("UiManager");
+        gameManager = GameManager.Get();
 
         UiManager = uiManager.GetComponent<UiManager>();
         objectSelector = Camera.GetComponent<ObjectSelector>();
@@ -23,6 +26,8 @@ public class GenTower : MonoBehaviour
         towers = new GameObject[Type.Tower.Max];
         towers[Type.Tower.Arrow] = Resources.Load("Tower/ArcherTower") as GameObject;
         towers[Type.Tower.Cannon] = Resources.Load("Tower/CanonTower") as GameObject;
+
+        GenTowers = GameObject.Find("GenTowers");
     }
 
     public void GenArrowTower()
@@ -64,10 +69,24 @@ public class GenTower : MonoBehaviour
     public void Gen(int towerIndex)
     {
         GameObject tower = Instantiate(towers[towerIndex]) as GameObject;
+        tower.transform.parent = GenTowers.transform;
+        switch (towerIndex)
+        {
+            case 0:
+                tower.transform.GetChild(0).name = "ArcherTower";
+                break;
+            case 3:
+                tower.transform.GetChild(0).name = "CannonTower";
+                break;
+        }
+
         Vector3 towerPos = objectSelector.selectedBuildPointPos;
+        objectSelector.selectedBuildingPoint.GetComponent<BuildingPointScript>().SetBuilding(true);
+        objectSelector.selectedBuildingPoint = null;
+
         tower.transform.position = towerPos;
         ButtonSellector.SetActive(false);
         tower.SetActive(true);
     }
-    
+
 }

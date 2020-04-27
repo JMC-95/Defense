@@ -9,4 +9,12 @@ namespace Type
         public static int Max = Cannon + 1;
     }
 
+    class TowerUiBotton
+    {
+        public static int Upgrade = 0;
+        public static int Sell = 1;
+        public static int Max = Sell + 1;
+    }
+
+
 }

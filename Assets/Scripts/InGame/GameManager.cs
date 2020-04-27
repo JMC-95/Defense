@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private float waveDelay = 3.0f;
     public int roundMax = 10;
     public int curRound = 0;
-
+    public int Gold = 500;
 
     public int enemyType;
     public int waveCount;

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4686353843056764}
   - component: {fileID: 33682757514571534}
   - component: {fileID: 23471093985503362}
+  - component: {fileID: 4580851020789608702}
+  - component: {fileID: 3842658296274705963}
   m_Layer: 0
   m_Name: TB_BuildingPoint
   m_TagString: Untagged
@@ -77,3 +79,28 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4580851020789608702
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323643566170160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 4.702209, z: 8}
+  m_Center: {x: 0, y: 2.3511045, z: 0}
+--- !u!114 &3842658296274705963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323643566170160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc33d31a93eefe04b93a1e327472ccea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

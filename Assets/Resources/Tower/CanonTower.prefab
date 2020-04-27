@@ -117,10 +117,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3564851278596097767}
     m_Modifications:
-    - target: {fileID: 1473710097402076, guid: 6b7a23871cd2ee842841b3389e2208c4, type: 3}
-      propertyPath: m_Name
-      value: TB_CanonTower_Lvl1
-      objectReference: {fileID: 0}
     - target: {fileID: 4065689770633286, guid: 6b7a23871cd2ee842841b3389e2208c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -164,6 +160,10 @@ PrefabInstance:
     - target: {fileID: 4065689770633286, guid: 6b7a23871cd2ee842841b3389e2208c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473710097402076, guid: 6b7a23871cd2ee842841b3389e2208c4, type: 3}
+      propertyPath: m_Name
+      value: TB_CanonTower_Lvl1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b7a23871cd2ee842841b3389e2208c4, type: 3}
