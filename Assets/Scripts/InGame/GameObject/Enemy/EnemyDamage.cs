@@ -10,9 +10,9 @@ public class EnemyDamage : MonoBehaviour
     public GameObject hpBar;
     public Vector3 hpBarOffset = new Vector3(-0.2f, 5.5f, 0);
 
+    private GameManager gameManager;
     private Canvas uiCanvas;
     private Image hpBarImage;
-    private GameManager gameManager;
 
     public void SetHpBar()
     {

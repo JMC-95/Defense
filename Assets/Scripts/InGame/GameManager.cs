@@ -18,17 +18,20 @@ public class GameManager : MonoBehaviour
 
     public int enemyType;
     public int waveCount;
+    public int curRound;
+    public int roundMax;
+
     public bool isWaveEnd = false;
     public bool isGameOver = false;
-    public bool isNextWave = false;
 
     
     static public GameManager Get()
     {
-        if(!instance)
+        if (!instance)
         {
             return instance = new GameManager();
         }
+
         return instance;
     }
 
@@ -48,6 +51,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        enemyType = 0;
+        waveCount = 0;
+        curRound = 0;
+        roundMax = 6;
+
         var archer = GameObject.Find("ArcherSpawner");
         var mage = GameObject.Find("MageSpawner");
         var swordman = GameObject.Find("SwordmanSpawner");
@@ -62,9 +70,6 @@ public class GameManager : MonoBehaviour
             enemySpawner[i] = enemyObj[i].GetComponent<EnemySpawner>();
         }
 
-        waveCount = 0;
-        enemyType = 0;
-
         StartCoroutine(enemySpawner[enemyType].CreateEnemy());
     }
 
@@ -77,13 +82,62 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (!isWaveEnd)
+        if (!isGameOver && !isWaveEnd)
         {
-            if (enemySpawner[enemyType].genCount >= enemySpawner[enemyType].genCountLimit)
+            if (enemyType < 3)
             {
-                if (GameObject.FindGameObjectsWithTag("ENEMY").Length == 0)
+                if (enemySpawner[enemyType].genCount >= enemySpawner[enemyType].genCountLimit)
                 {
-                    isWaveEnd = true;
+                    if (GameObject.FindGameObjectsWithTag("ENEMY").Length == 0)
+                    {
+                        isWaveEnd = true;
+                    }
+                }
+            }
+            else if (enemyType == 3)
+            {
+                if (enemySpawner[0].genCount >= enemySpawner[0].genCountLimit &&
+                    enemySpawner[1].genCount >= enemySpawner[1].genCountLimit)
+                {
+                    if (GameObject.FindGameObjectsWithTag("ENEMY").Length == 0)
+                    {
+                        isWaveEnd = true;
+                    }
+                }
+            }
+            else if (enemyType == 4)
+            {
+                if (enemySpawner[0].genCount >= enemySpawner[1].genCountLimit &&
+                    enemySpawner[1].genCount >= enemySpawner[2].genCountLimit)
+                {
+                    if (GameObject.FindGameObjectsWithTag("ENEMY").Length == 0)
+                    {
+                        isWaveEnd = true;
+                    }
+                }
+            }
+            else if (enemyType == 5)
+            {
+                if (enemySpawner[0].genCount >= enemySpawner[0].genCountLimit &&
+                    enemySpawner[1].genCount >= enemySpawner[2].genCountLimit)
+                {
+                    if (GameObject.FindGameObjectsWithTag("ENEMY").Length == 0)
+                    {
+                        isWaveEnd = true;
+                    }
+                }
+            }
+            else if (enemyType == 6)
+            {
+                if (enemySpawner[0].genCount >= enemySpawner[0].genCountLimit &&
+                    enemySpawner[1].genCount >= enemySpawner[1].genCountLimit &&
+                    enemySpawner[1].genCount >= enemySpawner[2].genCountLimit)
+                {
+                    if (GameObject.FindGameObjectsWithTag("ENEMY").Length == 0)
+                    {
+                        isGameOver = true;
+                        Debug.Log("Game End!!");
+                    }
                 }
             }
         }
@@ -93,22 +147,53 @@ public class GameManager : MonoBehaviour
 
             if (pastTime > waveDelay)
             {
-                isWaveEnd = false;
-
-                enemySpawner[enemyType].genCount = 0;
-                pastTime = 0.0f;
-                waveCount += 1;
-                enemyType += 1;
-
-                if(curRound < roundMax)
+                if (curRound < roundMax)
                 {
+                    pastTime = 0.0f;
+                    enemyType += 1;
+                    waveCount += 1;
                     curRound += 1;
-                    if (enemyType > 2) enemyType = 0;
-                    StartCoroutine(enemySpawner[enemyType].CreateEnemy());
-                }
-                else
-                {
-                    Debug.Log("Game End!!");
+
+                    if (enemyType < 3)
+                    {
+                        isWaveEnd = false;
+                        enemySpawner[enemyType].genCount = 0;
+                        StartCoroutine(enemySpawner[enemyType].CreateEnemy());
+                    }
+                    else if (enemyType == 3)
+                    {
+                        isWaveEnd = false;
+                        enemySpawner[0].genCount = 0;
+                        enemySpawner[1].genCount = 0;
+                        StartCoroutine(enemySpawner[0].CreateEnemy());
+                        StartCoroutine(enemySpawner[1].CreateEnemy());
+                    }
+                    else if (enemyType == 4)
+                    {
+                        isWaveEnd = false;
+                        enemySpawner[1].genCount = 0;
+                        enemySpawner[2].genCount = 0;
+                        StartCoroutine(enemySpawner[1].CreateEnemy());
+                        StartCoroutine(enemySpawner[2].CreateEnemy());
+                    }
+                    else if (enemyType == 5)
+                    {
+                        isWaveEnd = false;
+                        enemySpawner[0].genCount = 0;
+                        enemySpawner[2].genCount = 0;
+                        StartCoroutine(enemySpawner[0].CreateEnemy());
+                        StartCoroutine(enemySpawner[2].CreateEnemy());
+                    }
+                    else if (enemyType == 6)
+                    {
+                        isWaveEnd = false;
+                        enemySpawner[0].genCount = 0;
+                        enemySpawner[1].genCount = 0;
+                        enemySpawner[2].genCount = 0;
+                        StartCoroutine(enemySpawner[0].CreateEnemy());
+                        StartCoroutine(enemySpawner[1].CreateEnemy());
+                        StartCoroutine(enemySpawner[2].CreateEnemy());
+                    }
                 }
             }
         }

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5483537075407769861}
   - component: {fileID: 7424133229447776844}
   - component: {fileID: 797989000486330033}
+  - component: {fileID: 7486914608921709094}
+  - component: {fileID: 5378656028792208271}
   m_Layer: 0
   m_Name: Swordman
   m_TagString: ENEMY
@@ -79,6 +81,37 @@ MonoBehaviour:
   archerPath: []
   magePath: []
   swordmanPath: []
+--- !u!114 &7486914608921709094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7975770026104966382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93d2ed2f2e697146a9421054f75ade0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
+  initHp: 0
+  hpBarPrefab: {fileID: 8611805752137413379, guid: ff131eb7321a8c240b4a2119317a5c10,
+    type: 3}
+  hpBar: {fileID: 0}
+  hpBarOffset: {x: -0.2, y: 5.5, z: 0}
+--- !u!114 &5378656028792208271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7975770026104966382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235bcb132702a0349b282aee42de1fb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eachTurnHpMax: 
 --- !u!1001 &7991225635124432405
 PrefabInstance:
   m_ObjectHideFlags: 0

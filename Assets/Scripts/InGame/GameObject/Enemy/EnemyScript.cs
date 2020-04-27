@@ -15,9 +15,4 @@ public class EnemyScript : MonoBehaviour
             eachTurnHpMax[i] = 100 + i * 10;
         }
     }
-
-    void Update()
-    {
-        
-    }
 }

@@ -9,8 +9,6 @@ public class EndPoint : MonoBehaviour
     public GameObject[] enemyObj;
     public EnemySpawner[] enemySpawnerScript;
 
-    public float damage = 100.0f;
-
     private void Start()
     {
         var archer = GameObject.Find("ArcherSpawner");

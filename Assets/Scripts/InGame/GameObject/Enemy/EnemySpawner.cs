@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("Enemy Create Info")]
     private float createTime = 1.5f;    //몬스터 생성 시간
 
-    int enemyNum;
+    private int enemyNum;
     public int currEnemy;
     public int maxEnemy;
     public int genCount;                //한 왜이브에 생성된 오브젝트의 수
@@ -35,8 +35,6 @@ public class EnemySpawner : MonoBehaviour
         if (enemyPrefab.name == "Archer") enemyNum = 0;
         else if (enemyPrefab.name == "Mage") enemyNum = 1;
         else enemyNum = 2;
-
-        //StartCoroutine(this.CreateEnemy());
     }
 
     public IEnumerator CreateEnemy()
@@ -58,7 +56,16 @@ public class EnemySpawner : MonoBehaviour
                         var enemyDamage = enemy.GetComponent<EnemyDamage>();
                         enemyDamage.SetHpBar();
                     }
-
+                    else if (enemy.name == "Mage")
+                    {
+                        var enemyDamage = enemy.GetComponent<EnemyDamage>();
+                        enemyDamage.SetHpBar();
+                    }
+                    else if (enemy.name == "Swordman")
+                    {
+                        var enemyDamage = enemy.GetComponent<EnemyDamage>();
+                        enemyDamage.SetHpBar();
+                    }
 
                     SetToUnit(enemy);
                     currEnemy += 1;
