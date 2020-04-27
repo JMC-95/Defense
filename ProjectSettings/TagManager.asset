@@ -9,6 +9,7 @@ TagManager:
   - Button1
   - ENEMY
   - Bullet
+  - GROUND
   layers:
   - Default
   - TransparentFX

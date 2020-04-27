@@ -8,11 +8,27 @@ public class LazerSpawn : MonoBehaviour
     public GameObject ScaleDistance; //거리에 따른 스케일 변화를 위한 오브젝트 대상
     public GameObject RayResult; //충돌하는 위치에 출력할 결과
     private List<GameObject> collEnemys = new List<GameObject>();    //사거리 내에 들어온(충돌한) 객체를 담을 리스트
+    public bool hitEffect;
+
+    void Start()
+    {
+        hitEffect = false;
+    }
 
     void Update()
     {
+        if (hitEffect == true)
+        {
+            RayResult.SetActive(true);
+        }
+        if (hitEffect == false)
+        {
+            RayResult.SetActive(false);
+        }
+
         if (collEnemys.Count > 0)   //충돌한 객체가 한놈이라도 있을 경우
         {
+            hitEffect = true;
             GameObject target = collEnemys[0];          //첫번째로 충돌한 객체를 타겟으로 넣는다           
             if (target != null)
             {
@@ -33,7 +49,19 @@ public class LazerSpawn : MonoBehaviour
 
                 //해당하는 오브젝트의 회전값을 닿은 면적의 노멀방향와 일치시킨다.
                 RayResult.transform.rotation = Quaternion.LookRotation(hit.normal);
-            }           
+            }
+            if (target == null)
+            {
+                collEnemys.Remove(target);
+                hitEffect = false;
+                ScaleDistance.transform.localScale = new Vector3(1, 0, 1);      //레이저 길이 초기화
+            }
+        }
+
+        if(collEnemys.Count <= 0)
+        {
+            hitEffect = false;
+            ScaleDistance.transform.localScale = new Vector3(1, 0, 1);      //레이저 길이 초기화
         }
     }
 
@@ -49,9 +77,6 @@ public class LazerSpawn : MonoBehaviour
         {
             if (enemy == collision.gameObject)
             {
-                ScaleDistance.transform.localScale = new Vector3(1, 0, 1);      //레이저 길이 초기화
-                RayResult.transform.position = new Vector3(0, 0, 0);            //피격 이펙트 위치 초기화
-
                 collEnemys.Remove(enemy);
                 break;
             }

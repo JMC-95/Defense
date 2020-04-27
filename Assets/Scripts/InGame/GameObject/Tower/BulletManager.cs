@@ -8,10 +8,12 @@ public class BulletManager : MonoBehaviour
 
     [Header("Object pool")]
 
-    [SerializeField] public GameObject bulletPrefab;
+    [SerializeField] public GameObject arrowPrefab;
+    [SerializeField] public GameObject canonPrefab;
 
     public int maxPool = 10;
-    public List<GameObject> bulletPool = new List<GameObject>();
+    public List<GameObject> arrowPool = new List<GameObject>();
+    public List<GameObject> canonPool = new List<GameObject>();
 
     void Awake()
     {
@@ -28,30 +30,45 @@ public class BulletManager : MonoBehaviour
         CreatePooling();
     }
 
-    public GameObject GetBullet()
+    public GameObject GetArrow()
     {
-        for (int i = 0; i < bulletPool.Count; i ++)
+        for (int i = 0; i < arrowPool.Count; i ++)
         {
-            if(bulletPool[i].activeSelf == false)
+            if(arrowPool[i].activeSelf == false)
             {
-                return bulletPool[i];
+                return arrowPool[i];
             }
         }
         return null;
     }
 
-    public void CreatePooling()
+    public GameObject GetCanon()
+    {
+        for (int i = 0; i < canonPool.Count; i++)
+        {
+            if (canonPool[i].activeSelf == false)
+            {
+                return canonPool[i];
+            }
+        }
+        return null;
+    }
+
+        public void CreatePooling()
     {
         GameObject objectPools = new GameObject("ObjectPools");
 
         for(int i = 0; i < maxPool; i ++)
         {
-            var obj = Instantiate<GameObject>(bulletPrefab, objectPools.transform);
-            obj.name = "Bullet_" + i.ToString("00");
+            var arr = Instantiate<GameObject>(arrowPrefab, objectPools.transform);
+            arr.name = "Arrow_" + i.ToString("00");
+            arr.SetActive(false);
+            arrowPool.Add(arr);
 
-            obj.SetActive(false);
-
-            bulletPool.Add(obj);
+            var can = Instantiate<GameObject>(canonPrefab, objectPools.transform);
+            can.name = "Canon_" + i.ToString("00");
+            can.SetActive(false);
+            canonPool.Add(can);
         }
     }
 }

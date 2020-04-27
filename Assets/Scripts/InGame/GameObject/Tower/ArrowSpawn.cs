@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ArrowSpawn : MonoBehaviour
 {
-    [SerializeField] public GameObject bullet = null;                //총알 프리팹
     [SerializeField] public GameObject shooter = null;               //사수 프리팹
     [SerializeField] public Transform firePos = null;                //발사 위치
 
@@ -27,13 +26,12 @@ public class ArrowSpawn : MonoBehaviour
                 {
                     fireTimeMin = 0.0f;
          
-                    var arrow = BulletManager.instance.GetBullet();  //미사일 생성
+                    var arrow = BulletManager.instance.GetArrow();  //미사일 생성
                     if (arrow != null)
                     {
                         arrow.transform.position = firePos.position;                    //미사일 생성 포지션
                         arrow.transform.rotation = target.transform.rotation;           //미사일 생성 회전값
                         arrow.GetComponent<Arrow>().m_target = target;                  //미사일에게 타겟 전달
-                        //arrow.GetComponent<Rigidbody>().velocity = Vector3.up * 5f;     //미사일에게 위로 뜨게하는 힘을 가함
                         arrow.SetActive(true);
                     }  
                 }

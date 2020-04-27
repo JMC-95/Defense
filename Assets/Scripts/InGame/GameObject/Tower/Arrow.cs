@@ -31,7 +31,6 @@ public class Arrow : MonoBehaviour
     void OnDisable()
     {
         activeArrow = false;
-        //trail.Clear();
         tr.position = Vector3.zero;
         tr.rotation = Quaternion.identity;
         rb.Sleep();
@@ -46,17 +45,19 @@ public class Arrow : MonoBehaviour
 
             transform.position += transform.up * m_currentSpeed * Time.deltaTime;               //Y축(머리)으로 가속하여 날아간다
             targetPosition = (m_target.transform.position - transform.position).normalized;     //표적 위치 - 미사일 위치 => 방향과 거리 산출       normarlize로 방향만 남김
-            transform.up = Vector3.Lerp(transform.up, targetPosition, 0.5f);                   //Y축(머리)을 해당 방향으로 설정
-        }
+            transform.up = Vector3.Lerp(transform.up, targetPosition, 0.5f);                   //Y축(머리)을 해당 방향으로 설정            
+
+            if (m_target == null)
+            {
+                this.gameObject.SetActive(false);
+            }
+        }   
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider coll)
     {
-        if(collision.transform.CompareTag("ENEMY"))     //Enemy 태그가 붙은 객체와 충돌했을 때
+        if(coll.tag == "ENEMY")     //Enemy 태그가 붙은 객체와 충돌했을 때
         {
-
-            //Destroy(collision.gameObject);              //충돌된 객체 삭제
-            //Destroy(gameObject);                        //자신을 삭제
             this.gameObject.SetActive(false);
         }
     }

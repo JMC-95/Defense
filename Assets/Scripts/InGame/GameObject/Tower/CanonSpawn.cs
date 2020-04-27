@@ -5,7 +5,6 @@ using System;
 
 public class CanonSpawn : MonoBehaviour
 {
-    [SerializeField] public GameObject bullet = null;                //총알 프리팹
     [SerializeField] public GameObject gunBarrel = null;             //포신 프리팹
     [SerializeField] public Transform firePos = null;                //발사 위치
 
@@ -19,7 +18,7 @@ public class CanonSpawn : MonoBehaviour
 
     void Start()    //초기화
     {
-        gravity = 9.8f;
+        gravity = 50.0f;
         theta = 45f;
     }
 
@@ -43,11 +42,10 @@ public class CanonSpawn : MonoBehaviour
                 {
                     fireTimeMin = 0.0f;
 
-                    var aBolt = Instantiate(bullet, firePos.position, bullet.transform.rotation, transform);              //미사일 생성
+                    var aBolt = BulletManager.instance.GetCanon();  //미사일 생성
                     var cannon = aBolt.GetComponent<Canon>();
-                    var rigidbody = aBolt.GetComponent<Rigidbody>();
-                    aBolt.transform.position = firePos.transform.position;
-                    cannon.m_target = target;
+                    //var rigidbody = aBolt.GetComponent<Rigidbody>();
+                    aBolt.transform.position = firePos.position;
 
                     Vector3 velocity = new Vector3(target.transform.position.x - cannon.transform.position.x, 0.0f, target.transform.position.z - cannon.transform.position.z);
                     velocity = Vector3.Normalize(velocity);
@@ -57,7 +55,10 @@ public class CanonSpawn : MonoBehaviour
                     var dist = Vector3.Distance(cannon.transform.position, target.transform.position);
                     v0 = Mathf.Sqrt(gravity * dist / Mathf.Sin(Radian(2 * theta)));
 
-                    rigidbody.velocity = velocity * v0;
+                    //rigidbody.velocity = velocity * v0;
+                    aBolt.GetComponent<Canon>().SetVelocity(velocity * v0);
+
+                    aBolt.gameObject.SetActive(true);
                 }
             }
             if (target == null)     //타겟이 없으면 리스트의 첫번째에 담은 녀석을 지운다

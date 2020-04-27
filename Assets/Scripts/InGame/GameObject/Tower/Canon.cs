@@ -4,21 +4,49 @@ using UnityEngine;
 
 public class Canon : MonoBehaviour
 {
-    public GameObject m_target = null;                      //타겟
-    public Vector3 targetPosition = Vector3.zero;           //타겟의 위치
+
+    public Rigidbody canonRigidBody;
+    public float gravity;
+    public Vector3 velocity;
+
+    public void SetVelocity(Vector3 _velocity)
+    {
+        velocity = _velocity;
+    }
+
+    private void Start()
+    {
+        canonRigidBody = GetComponent<Rigidbody>();
+        gravity = 50.0f;
+    }
 
     void Update()
     {
-        transform.up = GetComponent<Rigidbody>().velocity;                          //Y축(머리)을 해당 방향으로 설정
+        velocity = new Vector3(velocity.x, velocity.y - gravity * Time.deltaTime, velocity.z);
+        canonRigidBody.transform.position += velocity * Time.deltaTime;
+        transform.up = velocity;                          //Y축(머리)을 해당 방향으로 설정
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("ENEMY"))     //Enemy 태그가 붙은 객체와 충돌했을 때
+        if (collision.gameObject.tag == "GROUND")
         {
+            this.gameObject.SetActive(false);
 
-            //Destroy(collision.gameObject);              //충돌된 객체 삭제
-            Destroy(gameObject);                        //자신을 삭제
+            var hitEffect = EffectManager.instance.GetBullet();  //이펙트 생성
+            hitEffect.transform.position = this.transform.position;
+            hitEffect.SetActive(true);
+
+
+            Collider[] hitsCol = Physics.OverlapSphere(transform.position, 10.0f);
+            foreach (Collider hit in hitsCol)
+            {
+                if (hit.gameObject.tag == "ENEMY")
+                {
+                    Destroy(hit.gameObject);
+                }
+            }
+
         }
     }
 }
