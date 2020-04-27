@@ -5,26 +5,24 @@ using UnityEngine;
 public class GenTower : MonoBehaviour
 {
     ObjectSelector objectSelector;
-    GameObject BuildSellector;
-    GameSystemScript gameSystem;
+    GameObject ButtonSellector;
+    UiManager UiManager;
 
-    const int towerVariation = 4;
-    public GameObject[] towers = new GameObject[towerVariation];
-    
+    public GameObject[] towers;
 
     void Start()
     {
-        var Camera = GameObject.Find("Camera 1");
-        gameSystem = GetComponent<GameSystemScript>();
-        objectSelector = Camera.GetComponent<ObjectSelector>();
+        var Camera = GameObject.Find("MainCamera");
         var Canvas = GameObject.Find("Canvas");
-        BuildSellector = Canvas.transform.GetChild(0).gameObject;
-        
-        var genTowers = GameObject.Find("GenTowers");
-        for(int i = 0; i < towerVariation; ++i)
-        {
-            towers[i] = genTowers.transform.GetChild(i).gameObject;
-        }
+        var uiManager = GameObject.Find("UiManager");
+
+        UiManager = uiManager.GetComponent<UiManager>();
+        objectSelector = Camera.GetComponent<ObjectSelector>();
+        ButtonSellector = Canvas.transform.GetChild(0).gameObject;
+
+        towers = new GameObject[Type.Tower.Max];
+        towers[Type.Tower.Arrow] = Resources.Load("Tower/ArcherTower") as GameObject;
+        towers[Type.Tower.Cannon] = Resources.Load("Tower/CanonTower") as GameObject;
     }
 
     public void GenArrowTower()
@@ -44,6 +42,7 @@ public class GenTower : MonoBehaviour
         }
         Gen(1);
     }
+
     public void GenMagicTower()
     {
         if (objectSelector.selectedBuildPointPos == objectSelector.nonePos)
@@ -52,6 +51,7 @@ public class GenTower : MonoBehaviour
         }
         Gen(2);
     }
+
     public void GenCannonTower()
     {
         if (objectSelector.selectedBuildPointPos == objectSelector.nonePos)
@@ -66,8 +66,7 @@ public class GenTower : MonoBehaviour
         GameObject tower = Instantiate(towers[towerIndex]) as GameObject;
         Vector3 towerPos = objectSelector.selectedBuildPointPos;
         tower.transform.position = towerPos;
-        gameSystem.Gold -= 10;
-        BuildSellector.SetActive(false);
+        ButtonSellector.SetActive(false);
         tower.SetActive(true);
     }
     

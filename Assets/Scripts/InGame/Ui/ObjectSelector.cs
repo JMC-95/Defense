@@ -6,7 +6,7 @@ using System;
 public class ObjectSelector : MonoBehaviour
 {
     GameObject BuildSelector;
-    double ButtonTurnOffDist = 150.0;
+    double ButtonTurnOffDist = 120.0;
     int screenWidth;
     int screenHeight;
 

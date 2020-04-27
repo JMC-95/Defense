@@ -18,7 +18,7 @@ public class ArrowSpawn : MonoBehaviour
        
         if (collEnemys.Count > 0)   //충돌한 객체가 한놈이라도 있을 경우
         {
-            GameObject target = collEnemys[0];          //첫번째로 충돌한 객체를 타겟으로 넣는다           
+            GameObject target = collEnemys[0];          //첫번째로 충돌한 객체를 타겟으로 넣는다 
             if (target != null)
             {                
                 shooter.transform.LookAt(target.transform.position);        //타겟을 향해 사수가 회전한다 (바라본다)
