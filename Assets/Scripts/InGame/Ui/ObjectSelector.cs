@@ -6,7 +6,7 @@ using System;
 public class ObjectSelector : MonoBehaviour
 {
     GameObject BuildSelector;
-    double ButtonTurnOffDist = 120.0;
+    double ButtonTurnOffDist = 100.0;
     int screenWidth;
     int screenHeight;
 
@@ -81,8 +81,19 @@ public class ObjectSelector : MonoBehaviour
     {
         bool SelectBuildPositon = false;
 
-        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
+        
+
+        if (Input.GetMouseButtonDown(0))
         {
+            if (BuildSelector.activeInHierarchy)
+            {
+                var mousePosition = Input.mousePosition;
+                if (GetDist(mousePosition, BuildSelector.transform.position) < ButtonTurnOffDist)
+                {
+                    return;
+                }
+            }
+
             GameObject target = null;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -99,7 +110,7 @@ public class ObjectSelector : MonoBehaviour
                     if (targetName.Substring(0, 16) == "TB_BuildingPoint")
                     {
                         Debug.Log("Select building point!");
-
+                        
                         SelectBuildPositon = true;
                         selectedBuildPointPos = target.transform.position;
 
