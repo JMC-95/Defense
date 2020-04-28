@@ -32,7 +32,8 @@ public class EnemySpawner : MonoBehaviour
         genCount = 0;
         genCountLimit = 5;
 
-        if (enemyPrefab.name == "Archer") enemyNum = 0;
+        //if (enemyPrefab.name == "Golem") enemyNum = 0;
+        if (enemyPrefab.name == "Orc") enemyNum = 0;
         else if (enemyPrefab.name == "Mage") enemyNum = 1;
         else enemyNum = 2;
     }
@@ -51,7 +52,8 @@ public class EnemySpawner : MonoBehaviour
                 {
                     var enemy = GetEnemy();
 
-                    if (enemy.name == "Archer")
+                    //if (enemy.name == "Golem")
+                    if (enemy.name == "Orc")
                     {
                         var enemyDamage = enemy.GetComponent<EnemyDamage>();
                         enemyDamage.SetHpBar();
@@ -104,13 +106,15 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject objectPools = new GameObject("ObjectPools");
 
-        if (enemyPrefab.name == "Archer")
+        //if (enemyPrefab.name == "Golem")
+        if (enemyPrefab.name == "Orc")
         {
             for (int i = 0; i < maxPool; i++)
             {
                 var obj = Instantiate<GameObject>(enemyPrefab, objectPools.transform);
 
-                obj.name = "Archer";
+                //obj.name = "Golem";
+                obj.name = "Orc";
                 obj.SetActive(false);
                 enemyPool.Add(obj);
             }

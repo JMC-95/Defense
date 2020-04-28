@@ -8,7 +8,7 @@ public class EnemyDamage : MonoBehaviour
 
     public GameObject hpBarPrefab;
     public GameObject hpBar;
-    public Vector3 hpBarOffset = new Vector3(-0.2f, 5.5f, 0);
+    public Vector3 hpBarOffset = new Vector3(0, 7.0f, 0);
 
     private GameManager gameManager;
     private Canvas uiCanvas;
@@ -33,21 +33,22 @@ public class EnemyDamage : MonoBehaviour
         _hpBar.offset = hpBarOffset;
     }
 
-    void OnCollisionEnter(Collision coll)
+    void OnTriggerEnter(Collider other)
     {
-        if (coll.collider.tag == "Bullet")
+        if (other.tag == "Bullet")
         {
-            coll.gameObject.SetActive(false);
-            hp -= coll.gameObject.GetComponent<Arrow>().damage;
+            other.gameObject.SetActive(false);
+            hp -= other.gameObject.GetComponent<Arrow>().damage;
             hpBarImage.fillAmount = hp / (float)initHp;
 
             if (hp <= 0.0f)
             {
                 Destroy(hpBar);
+                GetComponent<EnemyAI>().state = EnemyAI.State.Die;
             }
         }
 
-        if (coll.collider.tag == "LastPoint")
+        if (other.tag == "LastPoint")
         {
             Destroy(hpBar);
         }

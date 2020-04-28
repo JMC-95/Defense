@@ -35140,7 +35140,7 @@ MonoBehaviour:
   maxEnemy: 0
   genCount: 0
   genCountLimit: 0
-  enemyPrefab: {fileID: 7755587510445938288, guid: 978b0e24cfbc40f468c56de858ee4797,
+  enemyPrefab: {fileID: 1091293637548798, guid: b603af86ac880d246a16780f2c468564,
     type: 3}
 --- !u!4 &6925851886392935712
 Transform:

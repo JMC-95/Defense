@@ -24,19 +24,20 @@ public class EndPoint : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.collider.tag == enemyTag && other.collider.name == "Archer")
+        //if (other.tag == enemyTag && other.name == "Golem")
+        if (other.tag == enemyTag && other.name == "Orc")
         {
             enemySpawnerScript[0].currEnemy -= 1;
             other.gameObject.SetActive(false);
         }
-        else if (other.collider.tag == enemyTag && other.collider.name == "Mage")
+        else if (other.tag == enemyTag && other.name == "Mage")
         {
             enemySpawnerScript[1].currEnemy -= 1;
             other.gameObject.SetActive(false);
         }
-        else if (other.collider.tag == enemyTag && other.collider.name == "Swordman")
+        else if (other.tag == enemyTag && other.name == "Swordman")
         {
             enemySpawnerScript[2].currEnemy -= 1;
             other.gameObject.SetActive(false);
