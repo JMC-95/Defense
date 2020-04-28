@@ -27,13 +27,13 @@ public class Canon : MonoBehaviour
         transform.up = velocity;                          //Y축(머리)을 해당 방향으로 설정
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider coll)
     {
-        if (collision.gameObject.tag == "GROUND")
+        if (coll.gameObject.tag == "GROUND")
         {
             this.gameObject.SetActive(false);
 
-            var hitEffect = EffectManager.instance.GetBullet();  //이펙트 생성
+            var hitEffect = EffectManager.instance.GetCanonHit();  //이펙트 생성
             hitEffect.transform.position = this.transform.position;
             hitEffect.SetActive(true);
 
@@ -43,7 +43,7 @@ public class Canon : MonoBehaviour
             {
                 if (hit.gameObject.tag == "ENEMY")
                 {
-                    Destroy(hit.gameObject);
+                    hit.gameObject.SetActive(false);
                 }
             }
 

@@ -59,6 +59,10 @@ public class CanonSpawn : MonoBehaviour
                     aBolt.GetComponent<Canon>().SetVelocity(velocity * v0);
 
                     aBolt.gameObject.SetActive(true);
+
+                    var fireEffect = EffectManager.instance.GetCanonFire();  //이펙트 생성
+                    fireEffect.transform.position = this.transform.position + new Vector3(0,5,0);
+                    fireEffect.SetActive(true);
                 }
             }
             if (target == null)     //타겟이 없으면 리스트의 첫번째에 담은 녀석을 지운다
