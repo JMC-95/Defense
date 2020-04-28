@@ -10,7 +10,7 @@ public class CanonSpawn : MonoBehaviour
 
     private List<GameObject> collEnemys = new List<GameObject>();    //사거리 내에 들어온(충돌한) 객체를 담을 리스트
     [SerializeField] private float fireTimeMin = 0f;                 //발사 주기(최소)
-    [SerializeField] private float fireTimeMax = 5.0f;               //발사 주기(최대)    //5초마다 쏘겠다
+    [SerializeField] private float fireTimeMax = 1.0f;               //발사 주기(최대)    //5초마다 쏘겠다
 
     public float theta = 45f;   //각도
     public float gravity;       //중력값
@@ -65,9 +65,12 @@ public class CanonSpawn : MonoBehaviour
                     fireEffect.SetActive(true);
                 }
             }
-            if (target == null)     //타겟이 없으면 리스트의 첫번째에 담은 녀석을 지운다
+            for(int i = 0;i < collEnemys.Count; ++i)
             {
-                collEnemys.Remove(target);
+                if(!collEnemys[i].activeInHierarchy)
+                {
+                    collEnemys.Remove(collEnemys[i]);
+                }
             }
         }
     }
@@ -75,7 +78,9 @@ public class CanonSpawn : MonoBehaviour
     private void OnTriggerEnter(Collider collision)         //사거리내에 들어온 enemy태그가 붙은 객체를 리스트에 추가
     {
         if (collision.tag == "ENEMY")
+        {
             collEnemys.Add(collision.gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider collision)          //사거리를 빠져나간 녀석은 리스트에서 지운다

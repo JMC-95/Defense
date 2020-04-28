@@ -12,7 +12,7 @@ public class EnemyDamage : MonoBehaviour
 
     private GameManager gameManager;
     private Canvas uiCanvas;
-    private Image hpBarImage;
+    public Image hpBarImage;
 
     public void SetHpBar()
     {
@@ -35,19 +35,6 @@ public class EnemyDamage : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Bullet")
-        {
-            other.gameObject.SetActive(false);
-            hp -= other.gameObject.GetComponent<Arrow>().damage;
-            hpBarImage.fillAmount = hp / (float)initHp;
-
-            if (hp <= 0.0f)
-            {
-                Destroy(hpBar);
-                GetComponent<EnemyAI>().state = EnemyAI.State.Die;
-            }
-        }
-
         if (other.tag == "LastPoint")
         {
             Destroy(hpBar);

@@ -47,7 +47,7 @@ public class Arrow : MonoBehaviour
             targetPosition = (m_target.transform.position - transform.position).normalized;     //표적 위치 - 미사일 위치 => 방향과 거리 산출       normarlize로 방향만 남김
             transform.up = Vector3.Lerp(transform.up, targetPosition, 0.5f);                   //Y축(머리)을 해당 방향으로 설정            
 
-            if (m_target == null)
+            if (m_target.GetComponent<EnemyDamage>().hp <= 0.0f)
             {
                 this.gameObject.SetActive(false);
             }
@@ -58,7 +58,18 @@ public class Arrow : MonoBehaviour
     {
         if(coll.tag == "ENEMY")     //Enemy 태그가 붙은 객체와 충돌했을 때
         {
-            this.gameObject.SetActive(false);
+            var enemyDamage = coll.gameObject.GetComponent<EnemyDamage>();
+            {
+                enemyDamage.hp -= damage;
+
+                enemyDamage.hpBarImage.fillAmount = enemyDamage.hp / (float)enemyDamage.initHp;
+
+                if (enemyDamage.hp <= 0.0f)
+                {
+                    Destroy(enemyDamage.hpBar);
+                    coll.gameObject.GetComponent<EnemyAI>().state = EnemyAI.State.Die;
+                }
+            }
         }
     }
 }

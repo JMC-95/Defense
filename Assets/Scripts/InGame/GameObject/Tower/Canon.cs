@@ -8,6 +8,7 @@ public class Canon : MonoBehaviour
     public Rigidbody canonRigidBody;
     public float gravity;
     public Vector3 velocity;
+    public int damage = 30;
 
     public void SetVelocity(Vector3 _velocity)
     {
@@ -43,10 +44,20 @@ public class Canon : MonoBehaviour
             {
                 if (hit.gameObject.tag == "ENEMY")
                 {
-                    hit.gameObject.SetActive(false);
+                    var enemyDamage = hit.GetComponent<EnemyDamage>();
+                    {
+                        enemyDamage.hp -= damage;
+
+                        enemyDamage.hpBarImage.fillAmount = enemyDamage.hp / (float)enemyDamage.initHp;
+
+                        if (enemyDamage.hp <= 0.0f)
+                        {
+                            Destroy(enemyDamage.hpBar);
+                            hit.GetComponent<EnemyAI>().state = EnemyAI.State.Die;
+                        }
+                    }
                 }
             }
-
         }
     }
 }

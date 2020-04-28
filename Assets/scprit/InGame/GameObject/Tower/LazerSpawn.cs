@@ -13,6 +13,7 @@ public class LazerSpawn : MonoBehaviour
     void Start()
     {
         hitEffect = false;
+        RayResult = transform.GetChild(1).transform.GetChild(1).gameObject;
     }
 
     void Update()

@@ -31,6 +31,8 @@ public class UiManager : MonoBehaviour
         buildButton[Type.BuildingPointUiBotton.Archer].onClick.AddListener(genTowerSrcipt.GenArcherTowerCons);
         buildButton[Type.BuildingPointUiBotton.Cannon] = BuildButtons.transform.GetChild(Type.BuildingPointUiBotton.Cannon).gameObject.GetComponent<Button>();
         buildButton[Type.BuildingPointUiBotton.Cannon].onClick.AddListener(genTowerSrcipt.GenCannonTowerCons);
+        buildButton[Type.BuildingPointUiBotton.Mage] = BuildButtons.transform.GetChild(Type.BuildingPointUiBotton.Mage).gameObject.GetComponent<Button>();
+        buildButton[Type.BuildingPointUiBotton.Mage].onClick.AddListener(genTowerSrcipt.GenMageTowerCons);
 
         towerButton = new Button[Type.TowerUiBotton.Max];
         var TowerButtons = canvas.transform.GetChild(1).gameObject;

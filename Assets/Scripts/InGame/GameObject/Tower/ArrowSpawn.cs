@@ -36,13 +36,14 @@ public class ArrowSpawn : MonoBehaviour
                     }  
                 }
             }
-            if (target == null)     //타겟이 없으면 리스트의 첫번째에 담은 녀석을 지운다
+            for (int i = 0; i < collEnemys.Count; ++i)
             {
-                collEnemys.Remove(target);
+                if (!collEnemys[i].activeInHierarchy)
+                {
+                    collEnemys.Remove(collEnemys[i]);
+                }
             }
         }
-
-        
 
 
         if (collEnemys.Count <= 0)   //충돌한 객체가 한놈이라도 있을 경우

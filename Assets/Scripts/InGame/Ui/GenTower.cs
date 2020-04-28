@@ -30,6 +30,7 @@ public class GenTower : MonoBehaviour
         Cons = new GameObject[Type.Tower.Max];
         towers[Type.Tower.Archerlv1] = Resources.Load("Tower/ArcherTower") as GameObject;
         towers[Type.Tower.Cannonlv1] = Resources.Load("Tower/CanonTower") as GameObject;
+        towers[Type.Tower.Magelv1] = Resources.Load("Tower/MageTower") as GameObject;
 
         Cons[Type.Tower.Archerlv1] = Resources.Load("Cons/TB_ArcherTower_Lvl1_Cons") as GameObject;
         Cons[Type.Tower.Archerlv2] = Resources.Load("Cons/TB_ArcherTower_Lvl2_Cons") as GameObject;

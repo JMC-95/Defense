@@ -6,8 +6,7 @@ public class BulletManager : MonoBehaviour
 {
     public static BulletManager instance = null;
 
-    [Header("Object pool")]
-
+    //[Header("Object pool")]
     [SerializeField] public GameObject arrowPrefab;
     [SerializeField] public GameObject canonPrefab;
 
