@@ -41,6 +41,14 @@ public class ArrowSpawn : MonoBehaviour
                 collEnemys.Remove(target);
             }
         }
+
+        
+
+
+        if (collEnemys.Count <= 0)   //충돌한 객체가 한놈이라도 있을 경우
+        {           
+            shooter.transform.rotation = Quaternion.identity;
+        }
     }
 
     private void OnTriggerEnter(Collider collision)         //사거리내에 들어온 enemy태그가 붙은 객체를 리스트에 추가
