@@ -19,11 +19,11 @@ public class EnemyMove : MonoBehaviour
 
     public void Init(int arrNum)
     {
-        var archerWayObj = GameObject.Find("ArcherWayPoint");
-        var mageWayObj = GameObject.Find("MageWayPoint");
-        var swordmanWayObj = GameObject.Find("SwordmanWayPoint");
+        var middlePoint = GameObject.Find("MiddleWayPoint");
+        var leftPoint = GameObject.Find("LeftWayPoint");
+        var rightPoint = GameObject.Find("RightWayPoint");
 
-        monsterObj = new GameObject[3] { archerWayObj, mageWayObj, swordmanWayObj };
+        monsterObj = new GameObject[3] { middlePoint, leftPoint, rightPoint };
 
         if (monsterObj[arrNum] != null)
         {

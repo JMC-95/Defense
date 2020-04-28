@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6397497686726847}
   - component: {fileID: 1315921556667004106}
   m_Layer: 0
-  m_Name: SwordmanSpawner
+  m_Name: RightSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f13025f1716b85e42a8157998676946d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyNum: 0
   currEnemy: 0
   maxEnemy: 0
   genCount: 0
@@ -94,7 +93,7 @@ GameObject:
   - component: {fileID: 6397499630331925}
   - component: {fileID: 1350846056115085736}
   m_Layer: 0
-  m_Name: MageSpawner
+  m_Name: LeftSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f13025f1716b85e42a8157998676946d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyNum: 0
   currEnemy: 0
   maxEnemy: 0
   genCount: 0
@@ -144,7 +142,7 @@ GameObject:
   - component: {fileID: 7527047730207141668}
   - component: {fileID: 4107953744089031550}
   m_Layer: 0
-  m_Name: ArcherSpawner
+  m_Name: MiddleSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,7 +174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f13025f1716b85e42a8157998676946d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyNum: 0
   currEnemy: 0
   maxEnemy: 0
   genCount: 0

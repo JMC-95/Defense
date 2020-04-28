@@ -11,11 +11,11 @@ public class EndPoint : MonoBehaviour
 
     private void Start()
     {
-        var archer = GameObject.Find("ArcherSpawner");
-        var mage = GameObject.Find("MageSpawner");
-        var swordman = GameObject.Find("SwordmanSpawner");
+        var middle = GameObject.Find("MiddleSpawner");
+        var left = GameObject.Find("LeftSpawner");
+        var right = GameObject.Find("RightSpawner");
 
-        enemyObj = new GameObject[3] { archer, mage, swordman };
+        enemyObj = new GameObject[3] { middle, left, right };
         enemySpawnerScript = new EnemySpawner[3];
 
         for (int i = 0; i < enemyObj.Length; ++i)

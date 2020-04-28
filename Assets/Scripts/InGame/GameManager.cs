@@ -54,13 +54,13 @@ public class GameManager : MonoBehaviour
         curRound = 0;
         roundMax = 6;
 
-        var archer = GameObject.Find("ArcherSpawner");
-        var mage = GameObject.Find("MageSpawner");
-        var swordman = GameObject.Find("SwordmanSpawner");
+        var middle = GameObject.Find("MiddleSpawner");
+        var left = GameObject.Find("LeftSpawner");
+        var right = GameObject.Find("RightSpawner");
         var uiManager = GameObject.Find("UiManager");
 
         uiManagerScript = uiManager.GetComponent<UiManager>();
-        enemyObj = new GameObject[3] { archer, mage, swordman };
+        enemyObj = new GameObject[3] { middle, left, right };
         enemySpawner = new EnemySpawner[3];
 
         for (int i = 0; i < enemyObj.Length; ++i)
