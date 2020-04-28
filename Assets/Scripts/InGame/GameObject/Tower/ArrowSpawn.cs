@@ -45,8 +45,7 @@ public class ArrowSpawn : MonoBehaviour
             }
         }
 
-
-        if (collEnemys.Count <= 0)   //충돌한 객체가 한놈이라도 있을 경우
+        if (collEnemys.Count <= 0)   //충돌한 객체가 하나도 없으면 사수 바라보기를 정면으로
         {           
             shooter.transform.rotation = Quaternion.identity;
         }
