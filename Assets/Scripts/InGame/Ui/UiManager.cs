@@ -34,9 +34,9 @@ public class UiManager : MonoBehaviour
 
         towerButton = new Button[Type.TowerUiBotton.Max];
         var TowerButtons = canvas.transform.GetChild(1).gameObject;
-        towerButton[Type.TowerUiBotton.Sell] = TowerButtons.transform.GetChild(Type.TowerUiBotton.Sell).gameObject.GetComponent<Button>();
+        towerButton[Type.TowerUiBotton.Sell] = TowerButtons.transform.GetChild(Type.TowerUiBotton.Sell).GetComponent<Button>();
         towerButton[Type.TowerUiBotton.Sell].onClick.AddListener(towerUiScript.Sell);
-        towerButton[Type.TowerUiBotton.Upgrade] = TowerButtons.transform.GetChild(Type.TowerUiBotton.Upgrade).gameObject.GetComponent<Button>();
+        towerButton[Type.TowerUiBotton.Upgrade] = TowerButtons.transform.GetChild(Type.TowerUiBotton.Upgrade).GetComponent<Button>();
         towerButton[Type.TowerUiBotton.Upgrade].onClick.AddListener(towerUiScript.Upgrade);
 
         goldText = canvas.transform.GetChild(2).GetComponent<Text>();

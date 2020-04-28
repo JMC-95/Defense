@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
 
     private float pastTime = 0.0f;
     private float waveDelay = 3.0f;
-    public int roundMax = 10;
-    public int curRound = 0;
     public int Gold = 500;
 
     public int enemyType;

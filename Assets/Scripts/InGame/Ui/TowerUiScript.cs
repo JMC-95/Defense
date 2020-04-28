@@ -21,10 +21,11 @@ public class TowerUiScript : MonoBehaviour
     {
         Debug.Log("Sell Tower");
         towerSelector.SetActive(false);
+        objectSelector.selectedTower.transform.parent.GetComponent<BuildingPointScript>().Sell();
+
+        Destroy(objectSelector.selectedTower);
         objectSelector.selectedBuildingPoint = null;
         objectSelector.selectedTower = null;
-        objectSelector.selectedBuildingPoint.GetComponent<BuildingPointScript>().Sell();
-        Destroy(objectSelector.selectedTower);
 
         //Set Gold plus 
 
@@ -33,7 +34,11 @@ public class TowerUiScript : MonoBehaviour
     public void Upgrade()
     {
         towerSelector.SetActive(false);
-        objectSelector.selectedBuildingPoint.GetComponent<BuildingPointScript>().BuildStart();
+        objectSelector.selectedTower.transform.parent.GetComponent<BuildingPointScript>().BuildStart();
+
+        Destroy(objectSelector.selectedTower);
+        objectSelector.selectedBuildingPoint = null;
+        objectSelector.selectedTower = null;
         Debug.Log("Upgrade Tower");
     }
 

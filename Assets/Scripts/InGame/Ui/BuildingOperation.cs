@@ -38,12 +38,12 @@ public class BuildingOperation : MonoBehaviour
         buildingDuration = Type.Tower.GetBuildingDuration(type);
 
         buildingProgressBar = Instantiate(uiManagerScript.BuildingProgressBar) as GameObject;
-        buildingProgressBar.transform.parent = GameObject.Find("InGameUi").transform.GetChild(0).transform;
+        buildingProgressBar.transform.SetParent(GameObject.Find("InGameUi").transform.GetChild(0).transform);
         buildingProgressBar.SetActive(true);
         sliderScript = buildingProgressBar.GetComponent<Slider>();
 
         camera = Camera.main;
-        ScreenPos = Camera.main.WorldToScreenPoint(transform.position);
+        ScreenPos = camera.WorldToScreenPoint(transform.position);
         ScreenPos.y += yOffset;
         sliderScript.value = 0.0f;
 
