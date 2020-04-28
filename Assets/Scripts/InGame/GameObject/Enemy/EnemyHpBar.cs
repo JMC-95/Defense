@@ -25,7 +25,7 @@ public class EnemyHpBar : MonoBehaviour
 
     void LateUpdate()
     {
-        fillAmount = GetComponentsInChildren<Image>()[1].fillAmount;
+        //fillAmount = GetComponentsInChildren<Image>()[1].fillAmount;
 
         var screenPos = Camera.main.WorldToScreenPoint(targetTr.position + offset);
 

@@ -11,6 +11,7 @@ public class UiManager : MonoBehaviour
     GameObject canvas;
     GameManager gameManager;
 
+    public GameObject BuildingProgressBar;
     Button[] buildButton;
     Button[] towerButton;
 
@@ -21,6 +22,8 @@ public class UiManager : MonoBehaviour
         gameManager = GameManager.Get();
         genTowerSrcipt = GetComponent<GenTower>();
         towerUiScript = GetComponent<TowerUiScript>();
+
+        BuildingProgressBar = Resources.Load("Tower/BuildingProgressBar") as GameObject;
 
         buildButton = new Button[Type.Tower.Max];
         var BuildButtons = canvas.transform.GetChild(0).gameObject;

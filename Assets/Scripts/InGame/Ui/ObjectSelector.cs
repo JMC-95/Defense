@@ -144,7 +144,7 @@ public class ObjectSelector : MonoBehaviour
                     {
                         var buildingPoint = target.GetComponent<BuildingPointScript>();
                         
-                        if (buildingPoint.isOnBuilding())
+                        if (buildingPoint.OnTower)
                         {
                             Debug.Log("Select tower!");
 
@@ -155,7 +155,12 @@ public class ObjectSelector : MonoBehaviour
                             showTowerButton(GetTargetScreenPos(selectedTowerPos));
                             break;
                         }
-                        else
+                        else if(buildingPoint.OnCons)
+                        {
+                            Debug.Log("Select cons!");
+                            break;
+                        }
+                        else if(buildingPoint.OnEmpty)
                         {
                             Debug.Log("Select building point!");
 
