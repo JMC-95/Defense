@@ -5,7 +5,7 @@ using System;
 
 public class ObjectSelector : MonoBehaviour
 {
-    double ButtonTurnOffDist = 100.0;
+    double ButtonTurnOffDist = 130.0;
     int screenWidth;
     int screenHeight;
 
@@ -14,7 +14,7 @@ public class ObjectSelector : MonoBehaviour
     public GameObject selectedBuildingPoint = null;
     public Vector3 selectedBuildPointPos;
 
-    //Building
+    //Tower
     GameObject TowerSelector;
     public GameObject selectedTower = null;
     public Vector3 selectedTowerPos;
@@ -62,19 +62,20 @@ public class ObjectSelector : MonoBehaviour
 
     void turnOffButton(Vector3 ScreenPos)
     {
-        if (BuildSelector.activeInHierarchy)
+        if (selectedBuildingPoint)
         {
             var buttonPosition = BuildSelector.transform.position;
 
             var dist = GetDist(buttonPosition, ScreenPos);
             if (dist > ButtonTurnOffDist)
             {
+                selectedBuildingPoint = null;
                 selectedBuildPointPos = nonePos;
                 BuildSelector.SetActive(false);
             }
         }
 
-        if (TowerSelector.activeInHierarchy)
+        if (selectedTower)
         {
             var buttonPosition = TowerSelector.transform.position;
 
@@ -82,6 +83,7 @@ public class ObjectSelector : MonoBehaviour
             if (dist > ButtonTurnOffDist / 2)
             {
                 selectedTowerPos = nonePos;
+                selectedTower = null;
                 TowerSelector.SetActive(false);
             }
         }
@@ -107,22 +109,6 @@ public class ObjectSelector : MonoBehaviour
         targetScreenPos.y = targetScreenPos.y * screenHeight;
 
         return targetScreenPos;
-    }
-
-    GameObject FindTower(RaycastHit[] rayCastList)
-    {
-        for(int i = 0; i < rayCastList.Length; ++i)
-        {
-            var obj = rayCastList[i].collider.gameObject;
-            if (obj.name == "ArcherTower" || obj.name == "CannonTower")
-            {
-                if(obj.transform.position == selectedBuildPointPos)
-                {
-                    return rayCastList[i].collider.gameObject;
-                }
-            }
-        }
-        return null;
     }
 
     // Update is called once per frame
@@ -156,14 +142,14 @@ public class ObjectSelector : MonoBehaviour
                 {
                     if (targetName.Substring(0, 16) == "TB_BuildingPoint")
                     {
-                        Debug.Log("Select building point!");
                         var buildingPoint = target.GetComponent<BuildingPointScript>();
-                        selectedBuildingPoint = target;
-                        selectedBuildPointPos = selectedBuildingPoint.transform.position;
+                        
                         if (buildingPoint.isOnBuilding())
                         {
+                            Debug.Log("Select tower!");
+
                             isSelectObject = true;
-                            selectedTower = FindTower(rayCastList);
+                            selectedTower = target.transform.GetChild(0).gameObject;
                             selectedTowerPos = selectedTower.transform.position;
 
                             showTowerButton(GetTargetScreenPos(selectedTowerPos));
@@ -171,6 +157,10 @@ public class ObjectSelector : MonoBehaviour
                         }
                         else
                         {
+                            Debug.Log("Select building point!");
+
+                            selectedBuildingPoint = target;
+                            selectedBuildPointPos = selectedBuildingPoint.transform.position;
                             isSelectObject = true;
                             showBuildButton(GetTargetScreenPos(selectedBuildingPoint));
                             break;

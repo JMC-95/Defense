@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] enemyObj;
     public EnemySpawner[] enemySpawner;
+    public UiManager uiManagerScript;
 
     private float pastTime = 0.0f;
     private float waveDelay = 3.0f;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     public bool isGameOver = false;
     public bool isNextWave = false;
 
+    
     static public GameManager Get()
     {
         if(!instance)
@@ -49,7 +51,9 @@ public class GameManager : MonoBehaviour
         var archer = GameObject.Find("ArcherSpawner");
         var mage = GameObject.Find("MageSpawner");
         var swordman = GameObject.Find("SwordmanSpawner");
+        var uiManager = GameObject.Find("UiManager");
 
+        uiManagerScript = uiManager.GetComponent<UiManager>();
         enemyObj = new GameObject[3] { archer, mage, swordman };
         enemySpawner = new EnemySpawner[3];
 
@@ -63,6 +67,13 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(enemySpawner[enemyType].CreateEnemy());
     }
+
+    public void UseGold(int cost)
+    {
+        Gold -= cost;
+        uiManagerScript.UpdateGoldText();
+    }
+
 
     void Update()
     {

@@ -19,6 +19,8 @@ public class TowerUiScript : MonoBehaviour
     {
         Debug.Log("Sell Tower");
         towerSelector.SetActive(false);
+        objectSelector.selectedBuildingPoint = null;
+        objectSelector.selectedTower = null;
         objectSelector.selectedBuildingPoint.GetComponent<BuildingPointScript>().SetBuilding(false);
         Destroy(objectSelector.selectedTower);
     }

@@ -24,10 +24,10 @@ public class UiManager : MonoBehaviour
 
         buildButton = new Button[Type.Tower.Max];
         var BuildButtons = canvas.transform.GetChild(0).gameObject;
-        buildButton[Type.Tower.Arrow] = BuildButtons.transform.GetChild(Type.Tower.Arrow).gameObject.GetComponent<Button>();
-        buildButton[Type.Tower.Arrow].onClick.AddListener(genTowerSrcipt.GenArrowTower);
-        buildButton[Type.Tower.Cannon] = BuildButtons.transform.GetChild(Type.Tower.Cannon).gameObject.GetComponent<Button>();
-        buildButton[Type.Tower.Cannon].onClick.AddListener(genTowerSrcipt.GenCannonTower);
+        buildButton[Type.BuildingPointUiBotton.Archer] = BuildButtons.transform.GetChild(Type.BuildingPointUiBotton.Archer).gameObject.GetComponent<Button>();
+        buildButton[Type.BuildingPointUiBotton.Archer].onClick.AddListener(genTowerSrcipt.GenArcherTowerCons);
+        buildButton[Type.BuildingPointUiBotton.Cannon] = BuildButtons.transform.GetChild(Type.BuildingPointUiBotton.Cannon).gameObject.GetComponent<Button>();
+        buildButton[Type.BuildingPointUiBotton.Cannon].onClick.AddListener(genTowerSrcipt.GenCannonTowerCons);
 
         towerButton = new Button[Type.TowerUiBotton.Max];
         var TowerButtons = canvas.transform.GetChild(1).gameObject;
@@ -40,7 +40,7 @@ public class UiManager : MonoBehaviour
         UpdateGoldText();
     }
 
-    private void UpdateGoldText()
+    public void UpdateGoldText()
     {
         goldText.text = "Gold : " + gameManager.Gold.ToString();
     }
