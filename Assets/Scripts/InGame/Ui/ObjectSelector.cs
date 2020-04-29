@@ -5,7 +5,7 @@ using System;
 
 public class ObjectSelector : MonoBehaviour
 {
-    double ButtonTurnOffDist = 130.0;
+    double ButtonTurnOffDist;
     int screenWidth;
     int screenHeight;
 
@@ -31,6 +31,9 @@ public class ObjectSelector : MonoBehaviour
 
         screenWidth = Camera.main.scaledPixelWidth;
         screenHeight = Camera.main.scaledPixelHeight;
+
+        var rect = BuildSelector.GetComponent<RectTransform>().rect;
+        ButtonTurnOffDist = rect.width;
 
         nonePos = new Vector3(-99999.0f, -999999.0f, -999999.0f);
     }
@@ -179,8 +182,9 @@ public class ObjectSelector : MonoBehaviour
             }
             if (!isSelectObject)
             {
-                var hitScreenPos = GetTargetScreenPos(hitPoint);
-                turnOffButton(hitScreenPos);
+                //var hitScreenPos = GetTargetScreenPos(hitPoint);
+                //turnOffButton(hitScreenPos);
+                turnOffButton(hitPoint);
             }
         }
     }
