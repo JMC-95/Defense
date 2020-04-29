@@ -26,20 +26,14 @@ public class EndPoint : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //if (other.tag == enemyTag && other.name == "Golem")
         if (other.tag == enemyTag && other.name == "Orc")
         {
             enemySpawnerScript[0].currEnemy -= 1;
             other.gameObject.SetActive(false);
         }
-        else if (other.tag == enemyTag && other.name == "Mage")
+        else if (other.tag == enemyTag && other.name == "Golem")
         {
             enemySpawnerScript[1].currEnemy -= 1;
-            other.gameObject.SetActive(false);
-        }
-        else if (other.tag == enemyTag && other.name == "Swordman")
-        {
-            enemySpawnerScript[2].currEnemy -= 1;
             other.gameObject.SetActive(false);
         }
     }

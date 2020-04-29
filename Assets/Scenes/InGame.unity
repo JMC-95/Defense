@@ -2008,6 +2008,7 @@ MonoBehaviour:
   roundMax: 6
   isWaveEnd: 0
   isGameOver: 0
+  enemyPrefabs: []
 --- !u!4 &635093739
 Transform:
   m_ObjectHideFlags: 0
@@ -5781,7 +5782,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 612025429484175889}
-  - component: {fileID: 6415740298339061323}
+  - component: {fileID: 612025429484175896}
   m_Layer: 0
   m_Name: MiddleSpawner
   m_TagString: Untagged
@@ -5789,6 +5790,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &612025429484175896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612025429484175895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13025f1716b85e42a8157998676946d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currEnemy: 0
+  maxEnemy: 0
+  genCount: 0
+  genCountLimit: 0
+  enemyPrefabs: []
 --- !u!1001 &4580851020133688715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35567,23 +35585,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a51fe95cc8cc3a4ca8f62728430ca9f, type: 3}
---- !u!114 &6415740298339061323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612025429484175895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13025f1716b85e42a8157998676946d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currEnemy: 0
-  maxEnemy: 0
-  genCount: 0
-  genCountLimit: 0
-  enemyPrefab: {fileID: 0}
 --- !u!4 &6925851886392935712
 Transform:
   m_ObjectHideFlags: 0
@@ -35695,7 +35696,7 @@ MonoBehaviour:
   maxEnemy: 0
   genCount: 0
   genCountLimit: 0
-  enemyPrefab: {fileID: 0}
+  enemyPrefabs: []
 --- !u!114 &8265231979620535453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35712,4 +35713,4 @@ MonoBehaviour:
   maxEnemy: 0
   genCount: 0
   genCountLimit: 0
-  enemyPrefab: {fileID: 0}
+  enemyPrefabs: []

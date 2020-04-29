@@ -23,7 +23,7 @@ public class UiManager : MonoBehaviour
         genTowerSrcipt = GetComponent<GenTower>();
         towerUiScript = GetComponent<TowerUiScript>();
 
-        BuildingProgressBar = Resources.Load("Tower/BuildingProgressBar") as GameObject;
+        BuildingProgressBar = Resources.Load("Prefabs/Tower/BuildingProgressBar") as GameObject;
 
         buildButton = new Button[Type.Tower.Max];
         var BuildButtons = canvas.transform.GetChild(0).gameObject;

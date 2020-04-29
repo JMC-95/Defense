@@ -8,7 +8,7 @@ public class EnemyDamage : MonoBehaviour
 
     public GameObject hpBarPrefab;
     public GameObject hpBar;
-    public Vector3 hpBarOffset = new Vector3(0, 7.0f, 0);
+    public Vector3 hpBarOffset = new Vector3(0, 8.0f, 0);
 
     private GameManager gameManager;
     private Canvas uiCanvas;

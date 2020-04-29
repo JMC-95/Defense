@@ -15,14 +15,19 @@ public class GameManager : MonoBehaviour
     public int Gold = 500;
 
     public int enemyType;
-    public int waveCount;
+    public int waveCount = 0;
     public int curRound;
     public int roundMax;
 
     public bool isWaveEnd = false;
     public bool isGameOver = false;
 
-    
+    [Header("Enemy Resources")]
+    public GameObject[] enemyPrefabs;
+    public const int enemyTypeMax = 10;
+    public string bagicPath = "Prefabs/Enemy/";
+    public string[] enemyStrList;
+
     static public GameManager Get()
     {
         if (!instance)
@@ -45,6 +50,14 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
+
+        enemyStrList = new string[enemyTypeMax] { "Orc", "Golem", "Bat", "Dragon", "EvilMage", "MonsterPlant", "Skeleton", "Slime", "Spider", "TurtleShell" };
+        enemyPrefabs = new GameObject[enemyTypeMax];
+
+        for (int i = 0; i < enemyTypeMax; ++i)
+        {
+            enemyPrefabs[i] = Resources.Load(bagicPath + enemyStrList[i]) as GameObject;
+        }
     }
 
     void Start()
