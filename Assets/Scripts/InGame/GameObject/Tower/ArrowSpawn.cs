@@ -10,6 +10,7 @@ public class ArrowSpawn : MonoBehaviour
     private List<GameObject> collEnemys = new List<GameObject>();    //사거리 내에 들어온(충돌한) 객체를 담을 리스트
     [SerializeField] private float fireTimeMin = 0f;                 //발사 주기(최소)
     [SerializeField] private float fireTimeMax = 1.0f;               //발사 주기(최대)    //1초마다 쏘겠다
+    private Vector3 targetPosition;
 
     void Update()
     {
@@ -19,8 +20,9 @@ public class ArrowSpawn : MonoBehaviour
         {
             GameObject target = collEnemys[0];          //첫번째로 충돌한 객체를 타겟으로 넣는다 
             if (target != null)
-            {                
-                shooter.transform.LookAt(target.transform.position);        //타겟을 향해 사수가 회전한다 (바라본다)
+            {
+                targetPosition = new Vector3(0, target.transform.position.y, target.transform.position.z);
+                shooter.transform.LookAt(targetPosition);        //타겟을 향해 사수가 회전한다 (바라본다)
 
                 if (fireTimeMin > fireTimeMax)
                 {
