@@ -46,11 +46,11 @@ public class Canon : MonoBehaviour
                 {
                     var enemyDamage = hit.GetComponent<EnemyDamage>();
                     {
-                        enemyDamage.hp -= damage;
+                        enemyDamage.CurHp -= damage;
 
-                        enemyDamage.hpBarImage.fillAmount = enemyDamage.hp / (float)enemyDamage.initHp;
+                        enemyDamage.hpBarImage.fillAmount = enemyDamage.CurHp / (float)enemyDamage.InitHp;
 
-                        if (enemyDamage.hp <= 0.0f)
+                        if (enemyDamage.CurHp <= 0)
                         {
                             Destroy(enemyDamage.hpBar);
                             hit.GetComponent<EnemyAI>().state = EnemyAI.State.Die;

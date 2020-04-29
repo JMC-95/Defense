@@ -154,5 +154,54 @@ namespace Type
         public static int Max = Sell + 1;
     }
 
+    class Line
+    {
+        public static int Left = 0;
+        public static int Middle = 1;
+        public static int Right = 2;
+    }
+
+    class Enemy
+    {
+        public static int Orc = 0;
+        public static int Golem = 1;
+        public static int Bat = 2;
+        public static int Dragon = 3;
+        public static int EvilMage = 4;
+        public static int MonsterPlant = 5;
+        public static int Skeleton = 6;
+        public static int Slime = 7;
+        public static int Spider = 8;
+        public static int TurtleShell = 9;
+        public static int Max = TurtleShell + 1;
+
+        public static string ToString(int enemyType)
+        {
+            if (enemyType == 0)
+                return "Orc";
+            if (enemyType == 1)
+                return "Golem";
+            if (enemyType == 2)
+                return "Bat";
+            if (enemyType == 3)
+                return "Dragon";
+            if (enemyType == 4)
+                return "EvilMage";
+            if (enemyType == 5)
+                return "MonsterPlant";
+            if (enemyType == 6)
+                return "Skeleton";
+            if (enemyType == 7)
+                return "Slime";
+            if (enemyType == 8)
+                return "Spider";
+            if (enemyType == 9)
+                return "TurtleShell";
+
+            return null;
+        }
+    }
+
+
 
 }

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 441366704357559552}
   - component: {fileID: 441366704357559554}
-  - component: {fileID: 7494603815346955237}
   m_Layer: 0
   m_Name: EndPoint 1
   m_TagString: LastPoint
@@ -46,17 +45,3 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7494603815346955237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441366704357559580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad3b902f55229d4badb5be940f2d390, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyObj: []
-  enemySpawnerScript: []
