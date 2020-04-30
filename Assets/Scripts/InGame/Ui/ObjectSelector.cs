@@ -33,7 +33,7 @@ public class ObjectSelector : MonoBehaviour
         screenHeight = Camera.main.scaledPixelHeight;
 
         var rect = BuildSelector.GetComponent<RectTransform>().rect;
-        ButtonTurnOffDist = rect.width;
+        ButtonTurnOffDist = rect.width * 2;
 
         nonePos = new Vector3(-99999.0f, -999999.0f, -999999.0f);
     }
@@ -63,13 +63,13 @@ public class ObjectSelector : MonoBehaviour
         return Math.Sqrt(Math.Pow(position1.x - position2.x, 2) + Math.Pow(position1.y - position2.y, 2));
     }
 
-    void turnOffButton(Vector3 ScreenPos)
+    void turnOffButton(Vector3 hitPoint)
     {
         if (selectedBuildingPoint)
         {
             var buttonPosition = BuildSelector.transform.position;
 
-            var dist = GetDist(buttonPosition, ScreenPos);
+            var dist = GetDist(buttonPosition, hitPoint);
             if (dist > ButtonTurnOffDist)
             {
                 selectedBuildingPoint = null;
@@ -82,8 +82,8 @@ public class ObjectSelector : MonoBehaviour
         {
             var buttonPosition = TowerSelector.transform.position;
 
-            var dist = GetDist(buttonPosition, ScreenPos);
-            if (dist > ButtonTurnOffDist / 2)
+            var dist = GetDist(buttonPosition, hitPoint);
+            if (dist > ButtonTurnOffDist)
             {
                 selectedTowerPos = nonePos;
                 selectedTower = null;
@@ -182,8 +182,6 @@ public class ObjectSelector : MonoBehaviour
             }
             if (!isSelectObject)
             {
-                //var hitScreenPos = GetTargetScreenPos(hitPoint);
-                //turnOffButton(hitScreenPos);
                 turnOffButton(hitPoint);
             }
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LazerSpawnManyTarget : MonoBehaviour
+public class LazerSpawn : MonoBehaviour
 {
     public GameObject Raybody; //레이캐스팅을 쏘는 위치
     public GameObject ScaleDistance; //거리에 따른 스케일 변화를 위한 오브젝트 대상
@@ -61,19 +61,18 @@ public class LazerSpawnManyTarget : MonoBehaviour
                 RayResult.transform.position = hit.point;
 
                 //해당하는 오브젝트의 회전값을 닿은 면적의 노멀방향와 일치시킨다.
-                RayResult.transform.rotation = Quaternion.LookRotation(hit.normal);
+                //RayResult.transform.rotation = Quaternion.LookRotation(hit.normal);
 
 
                 var enemyDamage = target.GetComponent<EnemyDamage>();
                 {
                     if (giveDamage == true)
                     {
-                        enemyDamage.hp -= damage;
+                        enemyDamage.CurHp -= damage;
                         giveDamage = false;
                     }
-                    enemyDamage.hpBarImage.fillAmount = enemyDamage.hp / (float)enemyDamage.initHp;
 
-                    if (enemyDamage.hp <= 0.0f)
+                    if (enemyDamage.CurHp <= 0.0f)
                     {
                         Destroy(enemyDamage.hpBar);
                         target.GetComponent<EnemyAI>().state = EnemyAI.State.Die;
@@ -81,7 +80,7 @@ public class LazerSpawnManyTarget : MonoBehaviour
                 }                
             }
 
-            if (target.GetComponent<EnemyDamage>().hp <= 0.0f)
+            if (target.GetComponent<EnemyDamage>().CurHp <= 0.0f)
             {
                     collEnemys.Remove(target);
                     hitEffect = false;

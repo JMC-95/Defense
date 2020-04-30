@@ -10,11 +10,11 @@ namespace Type
         public static int Archerlv4A = 3;
         public static int Archerlv4B = 4;
 
-        public static int Cannonlv1 = 5;
-        public static int Cannonlv2 = 6;
-        public static int Cannonlv3 = 7;
-        public static int Cannonlv4A = 8;
-        public static int Cannonlv4B = 9;
+        public static int Canonlv1 = 5;
+        public static int Canonlv2 = 6;
+        public static int Canonlv3 = 7;
+        public static int Canonlv4A = 8;
+        public static int Canonlv4B = 9;
 
         public static int Magelv1 = 10;
         public static int Magelv2 = 11;
@@ -37,15 +37,15 @@ namespace Type
             if (towerType == Archerlv4B)
                 return "ArcherTowerLV4B";
 
-            if (towerType == Cannonlv1)
+            if (towerType == Canonlv1)
                 return "CannonTowerLV1";
-            if (towerType == Cannonlv2)
+            if (towerType == Canonlv2)
                 return "CannonTowerLV2";
-            if (towerType == Cannonlv3)
+            if (towerType == Canonlv3)
                 return "CannonTowerLV3";
-            if (towerType == Cannonlv4A)
+            if (towerType == Canonlv4A)
                 return "CannonTowerLV4A";
-            if (towerType == Cannonlv4B)
+            if (towerType == Canonlv4B)
                 return "CannonTowerLV4B";
 
             if (towerType == Magelv1)
@@ -75,15 +75,15 @@ namespace Type
             if (towerType == Archerlv4B)
                 return 5.0f;
 
-            if (towerType == Cannonlv1)
+            if (towerType == Canonlv1)
                 return 1.0f;
-            if (towerType == Cannonlv2)
+            if (towerType == Canonlv2)
                 return 2.0f;
-            if (towerType == Cannonlv3)
+            if (towerType == Canonlv3)
                 return 3.0f;
-            if (towerType == Cannonlv4A)
+            if (towerType == Canonlv4A)
                 return 4.0f;
-            if (towerType == Cannonlv4B)
+            if (towerType == Canonlv4B)
                 return 5.0f;
 
             if (towerType == Magelv1)
@@ -113,15 +113,15 @@ namespace Type
             if (towerType == Archerlv4B)
                 return 400;
 
-            if (towerType == Cannonlv1)
+            if (towerType == Canonlv1)
                 return 100;
-            if (towerType == Cannonlv2)
+            if (towerType == Canonlv2)
                 return 200;
-            if (towerType == Cannonlv3)
+            if (towerType == Canonlv3)
                 return 300;
-            if (towerType == Cannonlv4A)
+            if (towerType == Canonlv4A)
                 return 400;
-            if (towerType == Cannonlv4B)
+            if (towerType == Canonlv4B)
                 return 400;
 
             if (towerType == Magelv1)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LazerSpawn : MonoBehaviour
+public class LazerSpawnSlow : MonoBehaviour
 {
     public GameObject Raybody; //레이캐스팅을 쏘는 위치
     public GameObject ScaleDistance; //거리에 따른 스케일 변화를 위한 오브젝트 대상
@@ -68,12 +68,12 @@ public class LazerSpawn : MonoBehaviour
                 {
                     if (giveDamage == true)
                     {
-                        enemyDamage.hp -= damage;
+                        enemyDamage.CurHp -= damage;
                         giveDamage = false;
                     }
-                    enemyDamage.hpBarImage.fillAmount = enemyDamage.hp / (float)enemyDamage.initHp;
+                    enemyDamage.hpBarImage.fillAmount = enemyDamage.CurHp / (float)enemyDamage.InitHp;
 
-                    if (enemyDamage.hp <= 0.0f)
+                    if (enemyDamage.CurHp <= 0.0f)
                     {
                         Destroy(enemyDamage.hpBar);
                         target.GetComponent<EnemyAI>().state = EnemyAI.State.Die;
@@ -81,7 +81,7 @@ public class LazerSpawn : MonoBehaviour
                 }                
             }
 
-            if (target.GetComponent<EnemyDamage>().hp <= 0.0f)
+            if (target.GetComponent<EnemyDamage>().CurHp <= 0.0f)
             {
                     collEnemys.Remove(target);
                     hitEffect = false;

@@ -28,20 +28,34 @@ public class GenTower : MonoBehaviour
 
         towers = new GameObject[Type.Tower.Max];
         Cons = new GameObject[Type.Tower.Max];
-        towers[Type.Tower.Archerlv1] = Resources.Load("Prefabs/Tower/ArcherTower") as GameObject;
-        towers[Type.Tower.Cannonlv1] = Resources.Load("Prefabs/Tower/CanonTower") as GameObject;
-        towers[Type.Tower.Magelv1] = Resources.Load("Prefabs/Tower/MageTower") as GameObject;
+        towers[Type.Tower.Archerlv1] = Resources.Load("Prefabs/Tower/ArcherTower_Lvl1") as GameObject;
+        towers[Type.Tower.Archerlv2] = Resources.Load("Prefabs/Tower/ArcherTower_Lvl2") as GameObject;
+        towers[Type.Tower.Archerlv3] = Resources.Load("Prefabs/Tower/ArcherTower_Lvl3") as GameObject;
+        towers[Type.Tower.Archerlv4A] = Resources.Load("Prefabs/Tower/ArcherTower_Lvl4_A") as GameObject;
+        towers[Type.Tower.Archerlv4B] = Resources.Load("Prefabs/Tower/ArcherTower_Lvl4_B") as GameObject;
+
+        towers[Type.Tower.Canonlv1] = Resources.Load("Prefabs/Tower/CanonTower_Lvl1") as GameObject;
+        towers[Type.Tower.Canonlv2] = Resources.Load("Prefabs/Tower/CanonTower_Lvl2") as GameObject;
+        towers[Type.Tower.Canonlv3] = Resources.Load("Prefabs/Tower/CanonTower_Lvl3") as GameObject;
+        towers[Type.Tower.Canonlv4A] = Resources.Load("Prefabs/Tower/CanonTower_Lvl4_A") as GameObject;
+        towers[Type.Tower.Canonlv4B] = Resources.Load("Prefabs/Tower/CanonTower_Lvl4_B") as GameObject;
+
+        towers[Type.Tower.Magelv1] = Resources.Load("Prefabs/Tower/MageTower_Lvl1") as GameObject;
+        towers[Type.Tower.Magelv2] = Resources.Load("Prefabs/Tower/MageTower_Lvl2") as GameObject;
+        towers[Type.Tower.Magelv3] = Resources.Load("Prefabs/Tower/MageTower_Lvl3") as GameObject;
+        towers[Type.Tower.Magelv4A] = Resources.Load("Prefabs/Tower/MageTower_Lvl4_A") as GameObject;
+        towers[Type.Tower.Magelv4B] = Resources.Load("Prefabs/Tower/MageTower_Lvl4_B") as GameObject;
 
         Cons[Type.Tower.Archerlv1] = Resources.Load("Prefabs/Cons/TB_ArcherTower_Lvl1_Cons") as GameObject;
         Cons[Type.Tower.Archerlv2] = Resources.Load("Prefabs/Cons/TB_ArcherTower_Lvl2_Cons") as GameObject;
         Cons[Type.Tower.Archerlv3] = Resources.Load("Prefabs/Cons/TB_ArcherTower_Lvl3_Cons") as GameObject;
         Cons[Type.Tower.Archerlv4A] = Resources.Load("Prefabs/Cons/TB_ArcherTower_Lvl4_A_Cons") as GameObject;
         Cons[Type.Tower.Archerlv4B] = Resources.Load("Prefabs/Cons/TB_ArcherTower_Lvl4_B_Cons") as GameObject;
-        Cons[Type.Tower.Cannonlv1] = Resources.Load("Prefabs/Cons/TB_CanonTower_Lvl1_Cons") as GameObject;
-        Cons[Type.Tower.Cannonlv2] = Resources.Load("Prefabs/Cons/TB_CanonTower_Lvl2_Cons") as GameObject;
-        Cons[Type.Tower.Cannonlv3] = Resources.Load("Prefabs/Cons/TB_CanonTower_Lvl3_Cons") as GameObject;
-        Cons[Type.Tower.Cannonlv4A] = Resources.Load("Prefabs/Cons/TB_CanonTower_Lvl4_A_Cons") as GameObject;
-        Cons[Type.Tower.Cannonlv4B] = Resources.Load("Prefabs/Cons/TB_CanonTower_Lvl4_B_Cons") as GameObject;
+        Cons[Type.Tower.Canonlv1] = Resources.Load("Prefabs/Cons/TB_CanonTower_Lvl1_Cons") as GameObject;
+        Cons[Type.Tower.Canonlv2] = Resources.Load("Prefabs/Cons/TB_CanonTower_Lvl2_Cons") as GameObject;
+        Cons[Type.Tower.Canonlv3] = Resources.Load("Prefabs/Cons/TB_CanonTower_Lvl3_Cons") as GameObject;
+        Cons[Type.Tower.Canonlv4A] = Resources.Load("Prefabs/Cons/TB_CanonTower_Lvl4_A_Cons") as GameObject;
+        Cons[Type.Tower.Canonlv4B] = Resources.Load("Prefabs/Cons/TB_CanonTower_Lvl4_B_Cons") as GameObject;
         Cons[Type.Tower.Magelv1] = Resources.Load("Prefabs/Cons/TB_MageTower_Lvl1_Cons") as GameObject;
         Cons[Type.Tower.Magelv2] = Resources.Load("Prefabs/Cons/TB_MageTower_Lvl2_Cons") as GameObject;
         Cons[Type.Tower.Magelv3] = Resources.Load("Prefabs/Cons/TB_MageTower_Lvl3_Cons") as GameObject;
@@ -73,7 +87,7 @@ public class GenTower : MonoBehaviour
         {
             return;
         }
-        GenCons(Type.Tower.Cannonlv1);
+        GenCons(Type.Tower.Canonlv1);
     }
 
     public void GenCons(int towerType)

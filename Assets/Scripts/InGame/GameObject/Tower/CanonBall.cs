@@ -36,7 +36,7 @@ public class CanonBall : MonoBehaviour
             this.gameObject.SetActive(false);
 
             //이펙트 생성
-            var hitEffect = EffectManager.instance.GetCanonHit(); 
+            var hitEffect = EffectManager.instance.GetCanonHit();
             hitEffect.transform.position = this.transform.position;
             hitEffect.SetActive(true);
 
@@ -45,24 +45,19 @@ public class CanonBall : MonoBehaviour
             //범위 데미지
             Collider[] hitsSplashCol = Physics.OverlapSphere(transform.position, 20.0f);
 
-            //원에 충돌한 녀석을 탐지한다
-            Collider[] hitsCol = Physics.OverlapSphere(transform.position, 10.0f);
-
             foreach (Collider hit in hitsCol)
             {
                 if (hit.gameObject.tag == "ENEMY")
                 {
                     var enemyDamage = hit.GetComponent<EnemyDamage>();
+                    enemyDamage.CurHp -= damage;
+
+                    enemyDamage.hpBarImage.fillAmount = enemyDamage.CurHp / (float)enemyDamage.InitHp;
+
+                    if (enemyDamage.CurHp <= 0)
                     {
-                        enemyDamage.CurHp -= damage;
-
-                        enemyDamage.hpBarImage.fillAmount = enemyDamage.CurHp / (float)enemyDamage.InitHp;
-
-                        if (enemyDamage.CurHp <= 0)
-                        {
-                            Destroy(enemyDamage.hpBar);
-                            hit.GetComponent<EnemyAI>().state = EnemyAI.State.Die;
-                        }
+                        Destroy(enemyDamage.hpBar);
+                        hit.GetComponent<EnemyAI>().state = EnemyAI.State.Die;
                     }
                 }
             }
@@ -71,20 +66,23 @@ public class CanonBall : MonoBehaviour
             {
                 if (hit.gameObject.tag == "ENEMY")
                 {
-                    var enemyDamage = hit.GetComponent<EnemyDamage>();
+                    if (hit.GetComponent<EnemyAI>().state != EnemyAI.State.Die)
                     {
-                        enemyDamage.hp -= damage;
+                        var enemyDamage = hit.GetComponent<EnemyDamage>();
+                        enemyDamage.CurHp -= damage;
 
-                        enemyDamage.hpBarImage.fillAmount = enemyDamage.hp / (float)enemyDamage.initHp;
+                        enemyDamage.hpBarImage.fillAmount = enemyDamage.CurHp / (float)enemyDamage.InitHp;
 
-                        if (enemyDamage.hp <= 0.0f)
+                        if (enemyDamage.CurHp <= 0)
                         {
+
                             Destroy(enemyDamage.hpBar);
                             hit.GetComponent<EnemyAI>().state = EnemyAI.State.Die;
                         }
                     }
                 }
             }
+
         }
     }
 }
