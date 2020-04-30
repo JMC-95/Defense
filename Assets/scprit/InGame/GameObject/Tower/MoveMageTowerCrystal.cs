@@ -37,6 +37,4 @@ public class MoveMageTowerCrystal : MonoBehaviour
             Crystal.transform.position += new Vector3(0, -0.005f, 0);
         }
     }
-
-
 }

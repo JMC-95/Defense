@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Canon : MonoBehaviour
 {
+    public int damage = 11;
+    public float gravity;
 
     public Rigidbody canonRigidBody;
-    public float gravity;
     public Vector3 velocity;
-    public int damage = 30;
 
     public void SetVelocity(Vector3 _velocity)
     {
@@ -38,8 +38,8 @@ public class Canon : MonoBehaviour
             hitEffect.transform.position = this.transform.position;
             hitEffect.SetActive(true);
 
-
             Collider[] hitsCol = Physics.OverlapSphere(transform.position, 10.0f);
+
             foreach (Collider hit in hitsCol)
             {
                 if (hit.gameObject.tag == "ENEMY")

@@ -3,16 +3,19 @@ using UnityEngine.UI;
 
 public class EnemyDamage : MonoBehaviour
 {
-    public int CurHp;
-    public int InitHp;
+    private GameManager gameManager;
+    private EnemySpawner enemySpawnerScript;
+
     public GameObject hpBarPrefab;
     public GameObject hpBar;
     public Vector3 hpBarOffset = new Vector3(0, 8.0f, 0);
 
-    private GameManager gameManager;
-    EnemySpawner enemySpawnerScript;
     private Canvas uiCanvas;
     public Image hpBarImage;
+
+    public int CurHp;
+    public int InitHp;
+
     public bool isDie;
 
     public void Start()
@@ -26,6 +29,7 @@ public class EnemyDamage : MonoBehaviour
         {
             gameManager = GameManager.Get();
         }
+
         InitHp = hp;
         CurHp = InitHp;
 
@@ -44,16 +48,17 @@ public class EnemyDamage : MonoBehaviour
         {
             isDie = true;
             enemySpawnerScript.currEnemy -= 1;
-            Destroy(hpBar);
             gameObject.GetComponent<EnemyAI>().state = EnemyAI.State.Die;
+            gameManager.UseGold(-GetComponent<EnemyMove>().Gold);
+            Destroy(hpBar);
         }
     }
 
     public void ArriveEnd()
     {
         enemySpawnerScript.currEnemy -= 1;
-        Destroy(hpBar);
         gameObject.SetActive(false);
+        Destroy(hpBar);
     }
 
     void OnTriggerEnter(Collider other)

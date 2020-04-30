@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    private GameManager gameManager;
+
     [Header("Enemy Create Info")]
     private float createTime = 1.5f;    //몬스터 생성 시간
 
@@ -16,10 +18,9 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Object Pool")]
     private int maxPool = 50;           //오브젝트 풀내 오브젝트의 수
-
     public Dictionary<string, List<GameObject>> enemyPools;
+
     List<GenInfomation> curWaveEnemyList = new List<GenInfomation>();
-    GameManager gameManager;
 
     void Awake()
     {
@@ -37,11 +38,12 @@ public class EnemySpawner : MonoBehaviour
 
     public void ResetGenInfo()
     {
-        genCountLimit = 0;
         genCount = 0;
+        genCountLimit = 0;
         curWaveEnemyList.Clear();
 
         curWaveEnemyList = gameManager.GenInfoMation[GameManager.instance.curRound][GameManager.instance.curWave];
+
         foreach (var genInfo in curWaveEnemyList)
         {
             genCountLimit += genInfo.GenCount;
@@ -56,16 +58,16 @@ public class EnemySpawner : MonoBehaviour
             {
                 yield return new WaitForSeconds(createTime);
 
-                for(int i = 0; i < curWaveEnemyList.Count; ++i)
+                for (int i = 0; i < curWaveEnemyList.Count; ++i)
                 {
                     var enemy = GetEnemy(curWaveEnemyList[i].EnemyName);
                     var enemyDamage = enemy.GetComponent<EnemyDamage>();
+
                     enemyDamage.isDie = false;
-                    enemy.GetComponent<EnemyAI>().isDie = false;
-                    enemy.GetComponent<EnemyAI>().state = EnemyAI.State.Walk;
                     enemyDamage.SetHpBar(curWaveEnemyList[i].Hp);
-                    
-                    SetToUnit(enemy ,curWaveEnemyList[i].Line, curWaveEnemyList[i].Speed);
+                    enemy.GetComponent<EnemyAI>().state = EnemyAI.State.Walk;
+
+                    SetToUnit(enemy, curWaveEnemyList[i].Line, curWaveEnemyList[i].Speed, curWaveEnemyList[i].Gold);
                     currEnemy += 1;
                     genCount += 1;
                 }
@@ -77,44 +79,50 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void SetToUnit(GameObject unitObj, int line, int speed)
+    public void SetToUnit(GameObject unitObj, int line, int speed, int gold)
     {
         unitObj.transform.position = transform.GetChild(line).position;
         unitObj.transform.rotation = transform.GetChild(line).rotation;
         unitObj.SetActive(true);
-        unitObj.GetComponent<EnemyMove>().Init(line, speed);
+        unitObj.GetComponent<EnemyMove>().Init(line, speed, gold);
     }
 
     public GameObject GetEnemy(string enemyName)
     {
         var list = enemyPools[enemyName];
 
-        for(int i = 0; i < list.Count; ++i)
+        for (int i = 0; i < list.Count; ++i)
         {
-            if(!list[i].activeInHierarchy)
+            if (!list[i].activeInHierarchy)
             {
                 return list[i];
             }
         }
+
         return null;
     }
 
     public void CreatePooling()
     {
         GameObject objectPools = new GameObject("ObjectPools");
+
         enemyPools = new Dictionary<string, List<GameObject>>();
         gameManager.LoadEnemyPrefabs();
 
         for (int i = 0; i < Type.Enemy.Max; ++i)
         {
             var enemyName = Type.Enemy.ToString(i);
+
             List<GameObject> enemyPool = new List<GameObject>();
+
             for (int j = 0; j < maxPool; ++j)
             {
                 var enemy = Instantiate<GameObject>(gameManager.enemyPrefabs[i], objectPools.transform) as GameObject;
+
                 enemyPool.Add(enemy);
                 enemy.SetActive(false);
             }
+
             enemyPools.Add(enemyName, enemyPool);
         }
     }

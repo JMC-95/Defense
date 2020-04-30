@@ -83,13 +83,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93d2ed2f2e697146a9421054f75ade0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurHp: 0
-  InitHp: 0
   hpBarPrefab: {fileID: 8611805752137413379, guid: ff131eb7321a8c240b4a2119317a5c10,
     type: 3}
   hpBar: {fileID: 0}
-  hpBarOffset: {x: 0, y: 8, z: 0}
+  hpBarOffset: {x: -0.2, y: 7.5, z: 0}
   hpBarImage: {fileID: 0}
+  CurHp: 0
+  InitHp: 0
+  isDie: 0
 --- !u!114 &1782214213629536066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +106,7 @@ MonoBehaviour:
   middlePath: []
   leftPath: []
   rightPath: []
+  Gold: 0
 --- !u!54 &6498422698170299876
 Rigidbody:
   m_ObjectHideFlags: 0

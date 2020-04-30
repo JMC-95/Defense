@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5049466049486166995}
   - component: {fileID: 2394582478122245110}
   - component: {fileID: 7216785423561456515}
-  - component: {fileID: 6671953692468375056}
+  - component: {fileID: 1801249847837310977}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Bullet
@@ -65,7 +65,7 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0.05, y: 0, z: 0}
---- !u!114 &6671953692468375056
+--- !u!114 &1801249847837310977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247480fa35004a94abacffd864777549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
   m_target: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
   m_speed: 20
@@ -88,6 +89,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5049466049486166995}
     m_Modifications:
+    - target: {fileID: 1734245126228380, guid: c246c13351c285146b91ea26d3e4cda7, type: 3}
+      propertyPath: m_Name
+      value: TB_ArcherTower_Arrow
+      objectReference: {fileID: 0}
     - target: {fileID: 4102569786528102, guid: c246c13351c285146b91ea26d3e4cda7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -131,10 +136,6 @@ PrefabInstance:
     - target: {fileID: 4102569786528102, guid: c246c13351c285146b91ea26d3e4cda7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1734245126228380, guid: c246c13351c285146b91ea26d3e4cda7, type: 3}
-      propertyPath: m_Name
-      value: TB_ArcherTower_Arrow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c246c13351c285146b91ea26d3e4cda7, type: 3}

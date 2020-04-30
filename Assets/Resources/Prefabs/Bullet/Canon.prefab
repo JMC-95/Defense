@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 583218000368145340}
   - component: {fileID: 8907220415431062156}
-  - component: {fileID: 1847956192499867269}
   - component: {fileID: 6225639432573062292}
+  - component: {fileID: 6788667855928862940}
   m_Layer: 0
   m_Name: Canon
   m_TagString: Untagged
@@ -51,21 +51,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1847956192499867269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583218000368145343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffbd553b578fadf42b0d7b107389c79c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canonRigidBody: {fileID: 0}
-  gravity: 0
-  velocity: {x: 0, y: 0, z: 0}
 --- !u!136 &6225639432573062292
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -80,6 +65,22 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6788667855928862940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583218000368145343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffbd553b578fadf42b0d7b107389c79c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 11
+  gravity: 0
+  canonRigidBody: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1001 &583217999057868274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87,6 +88,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 583218000368145340}
     m_Modifications:
+    - target: {fileID: 1481178132486170, guid: 22e39feebf6cda84eb92e71beba20bf1, type: 3}
+      propertyPath: m_Name
+      value: TB_CanonTower_Lvl3_Rocket
+      objectReference: {fileID: 0}
     - target: {fileID: 4601037468149952, guid: 22e39feebf6cda84eb92e71beba20bf1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -130,10 +135,6 @@ PrefabInstance:
     - target: {fileID: 4601037468149952, guid: 22e39feebf6cda84eb92e71beba20bf1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1481178132486170, guid: 22e39feebf6cda84eb92e71beba20bf1, type: 3}
-      propertyPath: m_Name
-      value: TB_CanonTower_Lvl3_Rocket
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22e39feebf6cda84eb92e71beba20bf1, type: 3}

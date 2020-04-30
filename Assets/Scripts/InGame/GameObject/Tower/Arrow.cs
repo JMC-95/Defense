@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public int damage = 25;
+    public int damage = 5;
+
     public GameObject m_target = null;                      //타겟
     public Vector3 targetPosition = Vector3.zero;           //타겟의 위치
 
@@ -60,9 +61,11 @@ public class Arrow : MonoBehaviour
         if (coll.tag == "ENEMY")     //Enemy 태그가 붙은 객체와 충돌했을 때
         {
             var enemyDamage = coll.gameObject.GetComponent<EnemyDamage>();
+
             this.gameObject.SetActive(false);
             enemyDamage.CurHp -= damage;
             enemyDamage.hpBarImage.fillAmount = enemyDamage.CurHp / (float)enemyDamage.InitHp;
+
             if (enemyDamage.CurHp <= 0)
             {
                 enemyDamage.Die();

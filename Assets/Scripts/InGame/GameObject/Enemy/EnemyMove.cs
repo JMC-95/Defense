@@ -10,6 +10,8 @@ public class EnemyMove : MonoBehaviour
     public Transform[] leftPath;
     public Transform[] rightPath;
 
+    public int Gold;
+
     void OnDrawGizmos()
     {
         iTween.DrawPath(middlePath);
@@ -17,8 +19,10 @@ public class EnemyMove : MonoBehaviour
         iTween.DrawPath(rightPath);
     }   
 
-    public void Init(int line, int Speed)
+    public void Init(int line, int Speed,int gold)
     {
+        Gold = gold;
+
         var middlePoint = GameObject.Find("MiddleWayPoint");
         var leftPoint = GameObject.Find("LeftWayPoint");
         var rightPoint = GameObject.Find("RightWayPoint");
