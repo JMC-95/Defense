@@ -87,76 +87,77 @@ public class GameManager : MonoBehaviour
         tempDictionary1.Add(5, templist16);
         ret.Add(0, tempDictionary1);
 
-        ////2Round
-        //var tempDictionary2 = new Dictionary<int, List<GenInfomation>>();
-        ////2-1
-        //var templist21 = new List<GenInfomation>();
-        //templist21.Add(new GenInfomation(Type.Enemy.MonsterPlant, Type.Line.Middle, 7, 150, 20));
-        //tempDictionary2.Add(0, templist21);
-        ////2-2
-        //var templist22 = new List<GenInfomation>();
-        //templist22.Add(new GenInfomation(Type.Enemy.Spider, Type.Line.Left, 7, 150, 20));
-        //tempDictionary2.Add(1, templist22);
-        ////2-3
-        //var templist23 = new List<GenInfomation>();
-        //templist23.Add(new GenInfomation(Type.Enemy.Skeleton, Type.Line.Right, 7, 200, 20));
-        //tempDictionary2.Add(2, templist23);
-        ////2-4
-        //var templist24 = new List<GenInfomation>();
-        //templist24.Add(new GenInfomation(Type.Enemy.MonsterPlant, Type.Line.Middle, 10, 150, 20));
-        //templist24.Add(new GenInfomation(Type.Enemy.Spider, Type.Line.Left, 10, 150, 20));
-        //tempDictionary2.Add(3, templist24);
-        ////2-5
-        //var templist25 = new List<GenInfomation>();
-        //templist25.Add(new GenInfomation(Type.Enemy.Spider, Type.Line.Left, 10, 150, 20));
-        //templist25.Add(new GenInfomation(Type.Enemy.Skeleton, Type.Line.Right, 10, 200, 20));
-        //tempDictionary2.Add(4, templist25);
-        ////2-6
-        //var templist26 = new List<GenInfomation>();
-        //templist26.Add(new GenInfomation(Type.Enemy.Dragon, Type.Line.Middle, 1, 1200, 20));
-        //tempDictionary2.Add(5, templist26);
-        //ret.Add(1, tempDictionary2);
+        //2Round
+        var tempDictionary2 = new Dictionary<int, List<GenInfomation>>();
+        //2-1
+        var templist21 = new List<GenInfomation>();
+        templist21.Add(new GenInfomation(Type.Enemy.MonsterPlant, Type.Line.Middle, 10, 100, 5, 25));
+        tempDictionary2.Add(0, templist21);
+        //2-2
+        var templist22 = new List<GenInfomation>();
+        templist22.Add(new GenInfomation(Type.Enemy.TurtleShell, Type.Line.Left, 10, 150, 10, 30));
+        tempDictionary2.Add(1, templist22);
+        //2-3
+        var templist23 = new List<GenInfomation>();
+        templist23.Add(new GenInfomation(Type.Enemy.Skeleton, Type.Line.Right, 10, 200, 10, 35));
+        tempDictionary2.Add(2, templist23);
+        //2-4
+        var templist24 = new List<GenInfomation>();
+        templist24.Add(new GenInfomation(Type.Enemy.MonsterPlant, Type.Line.Middle, 15, 100, 5, 25));
+        templist24.Add(new GenInfomation(Type.Enemy.TurtleShell, Type.Line.Left, 15, 150, 10, 30));
+        tempDictionary2.Add(3, templist24);
+        //2-5
+        var templist25 = new List<GenInfomation>();
+        templist25.Add(new GenInfomation(Type.Enemy.TurtleShell, Type.Line.Left, 15, 150, 10, 30));
+        templist25.Add(new GenInfomation(Type.Enemy.Skeleton, Type.Line.Right, 15, 200, 10, 35));
+        tempDictionary2.Add(4, templist25);
+        //2-6
+        var templist26 = new List<GenInfomation>();
+        templist26.Add(new GenInfomation(Type.Enemy.Dragon, Type.Line.Middle, 1, 750, 10, 500));
+        tempDictionary2.Add(5, templist26);
+        ret.Add(1, tempDictionary2);
 
-        ////3Round
-        //var tempDictionary3 = new Dictionary<int, List<GenInfomation>>();
-        ////3-1
-        //var templist31 = new List<GenInfomation>();
-        //templist31.Add(new GenInfomation(Type.Enemy.EvilMage, Type.Line.Middle, 7, 200, 20));
-        //tempDictionary3.Add(0, templist31);
-        ////3-2
-        //var templist32 = new List<GenInfomation>();
-        //templist32.Add(new GenInfomation(Type.Enemy.Orc, Type.Line.Left, 7, 200, 20));
-        //tempDictionary3.Add(1, templist32);
-        ////3-3
-        //var templist33 = new List<GenInfomation>();
-        //templist33.Add(new GenInfomation(Type.Enemy.Golem, Type.Line.Right, 7, 250, 20));
-        //tempDictionary3.Add(2, templist33);
-        ////3-4
-        //var templist34 = new List<GenInfomation>();
-        //templist34.Add(new GenInfomation(Type.Enemy.EvilMage, Type.Line.Middle, 10, 200, 20));
-        //templist34.Add(new GenInfomation(Type.Enemy.Orc, Type.Line.Left, 10, 200, 20));
-        //tempDictionary3.Add(3, templist34);
-        ////3-5
-        //var templist35 = new List<GenInfomation>();
-        //templist35.Add(new GenInfomation(Type.Enemy.Orc, Type.Line.Left, 10, 230, 20));
-        //templist35.Add(new GenInfomation(Type.Enemy.Golem, Type.Line.Right, 10, 230, 20));
-        //tempDictionary3.Add(4, templist35);
-        ////3-6
-        //var templist36 = new List<GenInfomation>();
-        //templist36.Add(new GenInfomation(Type.Enemy.Dragon, Type.Line.Left, 1, 2000, 20));
-        //templist36.Add(new GenInfomation(Type.Enemy.Dragon, Type.Line.Right, 1, 2000, 20));
-        //tempDictionary3.Add(5, templist36);
-        //ret.Add(2, tempDictionary3);
+        //3Round
+        var tempDictionary3 = new Dictionary<int, List<GenInfomation>>();
+        //3-1
+        var templist31 = new List<GenInfomation>();
+        templist31.Add(new GenInfomation(Type.Enemy.EvilMage, Type.Line.Middle, 10, 250, 15, 40));
+        tempDictionary3.Add(0, templist31);
+        //3-2
+        var templist32 = new List<GenInfomation>();
+        templist32.Add(new GenInfomation(Type.Enemy.Orc, Type.Line.Left, 10, 300, 15, 45));
+        tempDictionary3.Add(1, templist32);
+        //3-3
+        var templist33 = new List<GenInfomation>();
+        templist33.Add(new GenInfomation(Type.Enemy.Golem, Type.Line.Right, 10, 400, 10, 50));
+        tempDictionary3.Add(2, templist33);
+        //3-4
+        var templist34 = new List<GenInfomation>();
+        templist34.Add(new GenInfomation(Type.Enemy.EvilMage, Type.Line.Middle, 10, 250, 15, 40));
+        templist34.Add(new GenInfomation(Type.Enemy.Orc, Type.Line.Left, 15, 250, 15, 45));
+        tempDictionary3.Add(3, templist34);
+        //3-5
+        var templist35 = new List<GenInfomation>();
+        templist35.Add(new GenInfomation(Type.Enemy.Orc, Type.Line.Left, 7, 300, 15, 45));
+        templist35.Add(new GenInfomation(Type.Enemy.Golem, Type.Line.Right, 10, 400, 10, 50));
+        tempDictionary3.Add(4, templist35);
+        //3-6
+        var templist36 = new List<GenInfomation>();
+        templist36.Add(new GenInfomation(Type.Enemy.EvilMage, Type.Line.Middle, 10, 250, 15, 40));
+        templist36.Add(new GenInfomation(Type.Enemy.Orc, Type.Line.Left, 7, 300, 15, 45));
+        templist36.Add(new GenInfomation(Type.Enemy.Golem, Type.Line.Right, 10, 400, 10, 50));
+        tempDictionary3.Add(5, templist36);
+        ret.Add(2, tempDictionary3);
 
-        ////4Round
-        //var tempDictionary4 = new Dictionary<int, List<GenInfomation>>();
-        ////4-1
-        //var templist41 = new List<GenInfomation>();
-        //templist41.Add(new GenInfomation(Type.Enemy.Dragon, Type.Line.Left, 1, 1500, 20));
-        //templist41.Add(new GenInfomation(Type.Enemy.Dragon, Type.Line.Middle, 1, 1500, 20));
-        //templist41.Add(new GenInfomation(Type.Enemy.Dragon, Type.Line.Right, 1, 1500, 20));
-        //tempDictionary4.Add(0, templist41);
-        //ret.Add(3, tempDictionary4);
+        //4Round
+        var tempDictionary4 = new Dictionary<int, List<GenInfomation>>();
+        //4-1
+        var templist41 = new List<GenInfomation>();
+        templist41.Add(new GenInfomation(Type.Enemy.Dragon, Type.Line.Left, 1, 1000, 15, 700));
+        templist41.Add(new GenInfomation(Type.Enemy.Dragon, Type.Line.Middle, 1, 1000, 15, 700));
+        templist41.Add(new GenInfomation(Type.Enemy.Dragon, Type.Line.Right, 1, 1000, 15, 700));
+        tempDictionary4.Add(0, templist41);
+        ret.Add(3, tempDictionary4);
 
         return ret;
     }

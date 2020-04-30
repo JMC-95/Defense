@@ -1230,7 +1230,7 @@ MonoBehaviour:
   hpBarPrefab: {fileID: 8611805752137413379, guid: ff131eb7321a8c240b4a2119317a5c10,
     type: 3}
   hpBar: {fileID: 0}
-  hpBarOffset: {x: -0.2, y: 8, z: 0}
+  hpBarOffset: {x: 0, y: 7, z: 0}
   hpBarImage: {fileID: 0}
   CurHp: 0
   InitHp: 0
