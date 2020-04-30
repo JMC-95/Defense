@@ -29,7 +29,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4033728862015121744
+--- !u!114 &207586056379071621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38,7 +38,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6339383861749336466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff9e0b6562ef71a4db4f66f862095f2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 97300ba0ff3287c489ec2ce4d4feabe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shooter: {fileID: 8926191423686138782}
@@ -131,7 +131,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8926191425579060733}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.294, y: -0.028, z: -4.12}
+  m_LocalPosition: {x: -0.294, y: -0.028, z: -2.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8931068587919496380}

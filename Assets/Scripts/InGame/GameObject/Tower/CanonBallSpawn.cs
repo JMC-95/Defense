@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class CanonSpawn : MonoBehaviour
+public class CanonBallSpawn : MonoBehaviour
 {
     [SerializeField] public GameObject gunBarrel = null;             //포신 프리팹
     [SerializeField] public Transform firePos = null;                //발사 위치
@@ -42,8 +42,8 @@ public class CanonSpawn : MonoBehaviour
                 {
                     fireTimeMin = 0.0f;
 
-                    var aBolt = BulletManager.instance.GetCanon();  //미사일 생성
-                    var cannon = aBolt.GetComponent<Canon>();
+                    var aBolt = BulletManager.instance.GetCanonBall();  //미사일 생성
+                    var cannon = aBolt.GetComponent<CanonBall>();
                     //var rigidbody = aBolt.GetComponent<Rigidbody>();
                     aBolt.transform.position = firePos.position;
 
@@ -56,7 +56,7 @@ public class CanonSpawn : MonoBehaviour
                     v0 = Mathf.Sqrt(gravity * dist / Mathf.Sin(Radian(2 * theta)));
 
                     //rigidbody.velocity = velocity * v0;
-                    aBolt.GetComponent<Canon>().SetVelocity(velocity * v0);
+                    aBolt.GetComponent<CanonBall>().SetVelocity(velocity * v0);
 
                     aBolt.gameObject.SetActive(true);
 

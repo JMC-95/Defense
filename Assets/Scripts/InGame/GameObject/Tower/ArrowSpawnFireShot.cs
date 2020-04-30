@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowSpawn : MonoBehaviour
+public class ArrowSpawnFireShot : MonoBehaviour
 {
     [SerializeField] public GameObject shooter = null;               //사수 프리팹
     [SerializeField] public Transform firePos = null;                //발사 위치
@@ -21,14 +21,14 @@ public class ArrowSpawn : MonoBehaviour
             GameObject target = collEnemys[0];          //첫번째로 충돌한 객체를 타겟으로 넣는다 
             if (target != null)
             {
-                targetPosition = new Vector3(target.transform.position.x, shooter.transform.position.y, target.transform.position.z);
+                targetPosition = new Vector3(target.transform.position.x, shooter.transform.position.y , target.transform.position.z);
                 shooter.transform.LookAt(targetPosition);        //타겟을 향해 사수가 회전한다 (바라본다)
 
                 if (fireTimeMin > fireTimeMax)
                 {
                     fireTimeMin = 0.0f;
          
-                    var arrow = BulletManager.instance.GetArrow();  //미사일 생성
+                    var arrow = BulletManager.instance.GetFireArrow();  //미사일 생성
                     if (arrow != null)
                     {
                         arrow.transform.position = firePos.position;                    //미사일 생성 포지션

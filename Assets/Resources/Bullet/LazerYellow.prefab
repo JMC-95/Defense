@@ -14135,8 +14135,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 945ac39de625ae74ebd997c093eb21e6, type: 2}
-  - {fileID: 2100000, guid: 945ac39de625ae74ebd997c093eb21e6, type: 2}
+  - {fileID: 2100000, guid: 0260c8f9dfc892b4cbc8fb71d253d692, type: 2}
+  - {fileID: 2100000, guid: 0260c8f9dfc892b4cbc8fb71d253d692, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14236,7 +14236,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d1f50e44afedeb428eae6f247cd4b1b, type: 2}
+  - {fileID: 2100000, guid: 74e73cd0b429f6948b06507affb971e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19060,6 +19060,10 @@ MonoBehaviour:
   ScaleDistance: {fileID: 1750129612456042}
   RayResult: {fileID: 1985957320200638}
   hitEffect: 0
+  layerMask: 0
+  damage: 1
+  damageTime: 0
+  giveDamage: 0
 --- !u!23 &23714645545555448
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19077,7 +19081,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d1f50e44afedeb428eae6f247cd4b1b, type: 2}
+  - {fileID: 2100000, guid: 74e73cd0b429f6948b06507affb971e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19162,7 +19166,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d1f50e44afedeb428eae6f247cd4b1b, type: 2}
+  - {fileID: 2100000, guid: 74e73cd0b429f6948b06507affb971e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19192,7 +19196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4815942022278904}
   m_Layer: 0
-  m_Name: Lazer
+  m_Name: LazerYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19317,7 +19321,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.43448275, b: 0, a: 1}
+  m_Color: {r: 0.9866245, g: 1, b: 0, a: 1}
   m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 30

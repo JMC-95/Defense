@@ -90,7 +90,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &700192637542898875
+--- !u!114 &5255635782813036186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,11 +99,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6679403890192443662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff9e0b6562ef71a4db4f66f862095f2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a67fecb467ce91448fde7dc647e66a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shooter: {fileID: 8926191423686138782}
-  firePos: {fileID: 8926191425579060734}
+  shooterRight: {fileID: 8926191423686138782}
+  shooterLeft: {fileID: 5005456331815548186}
+  firePosRight: {fileID: 8926191425579060734}
+  firePosLeft: {fileID: 6372665186562756033}
   fireTimeMin: 0
   fireTimeMax: 1
 --- !u!1 &8926191423686138782

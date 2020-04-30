@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3564851278596097768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4752656460534568215}
@@ -90,7 +90,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 50
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2392311937981224004
+--- !u!114 &39879444200105346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4747685637101662273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d308f257fefc896449f9013694a3aba7, type: 3}
+  m_Script: {fileID: 11500000, guid: 58a4cbbc5d0bd9d44ae1d90531021d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gunBarrel: {fileID: 4746919835973613087}
