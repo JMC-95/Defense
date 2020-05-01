@@ -9,6 +9,7 @@ public class ObjectSelector : MonoBehaviour
     int screenWidth;
     int screenHeight;
 
+    GameObject CameraPanel;
     //Building point
     GameObject BuildSelector;
     public GameObject selectedBuildingPoint = null;
@@ -29,11 +30,13 @@ public class ObjectSelector : MonoBehaviour
         TowerSelector = canvas.transform.GetChild(1).gameObject;
         TowerSelector.SetActive(false);
 
+        CameraPanel = canvas.transform.GetChild(3).gameObject;
+
         screenWidth = Camera.main.scaledPixelWidth;
         screenHeight = Camera.main.scaledPixelHeight;
 
         var rect = BuildSelector.GetComponent<RectTransform>().rect;
-        ButtonTurnOffDist = rect.width * 2;
+        ButtonTurnOffDist = rect.width * 2 + 50;
 
         nonePos = new Vector3(-99999.0f, -999999.0f, -999999.0f);
     }
@@ -121,6 +124,15 @@ public class ObjectSelector : MonoBehaviour
         bool isUseMouse = false;
         Vector3 clickPosition;
 
+        if(BuildSelector.activeInHierarchy || TowerSelector.activeInHierarchy)
+        {
+            CameraPanel.SetActive(false);
+        }
+        else
+        {
+            CameraPanel.SetActive(true);
+        }
+
         //Detect click
         if (Input.touchCount > 0)
         {
@@ -149,7 +161,7 @@ public class ObjectSelector : MonoBehaviour
         //Check Selector on
         if (BuildSelector.activeInHierarchy )
         {
-            if(Vector3.Distance(BuildSelector.transform.position, clickPosition) < ButtonTurnOffDist)
+            if (Vector3.Distance(BuildSelector.transform.position, clickPosition) < ButtonTurnOffDist)
             {
                 return;
             }
@@ -162,8 +174,8 @@ public class ObjectSelector : MonoBehaviour
             }
         }
 
-        //Selector raycast
-        GameObject target = null;
+       //Selector raycast
+       GameObject target = null;
         bool isSelectObject = false;
 
         Ray ray = Camera.main.ScreenPointToRay(clickPosition);

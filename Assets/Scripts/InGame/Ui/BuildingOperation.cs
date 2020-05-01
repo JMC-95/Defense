@@ -9,7 +9,7 @@ public class BuildingOperation : MonoBehaviour
     GenTower genTower;
     UiManager uiManagerScript;
 
-    float yOffset = 50.0f;
+    float yOffset = 100.0f;
     GameObject buildingProgressBar;
     Slider sliderScript;
 
