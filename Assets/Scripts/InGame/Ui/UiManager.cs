@@ -6,10 +6,15 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
     Text goldText;
+    Text WaveText;
+    Text RoundText;
     GenTower genTowerSrcipt;
     TowerUiScript towerUiScript;
     GameObject canvas;
     GameManager gameManager;
+    GameObject lifePrefab;
+    GameObject clock;
+    GameObject clock_needle;
 
     public GameObject BuildingProgressBar;
     Button[] buildButton;
@@ -22,6 +27,8 @@ public class UiManager : MonoBehaviour
     EnemySpawner enemySpawnerScript;
     float changeAlpha = 0.1f;
 
+    public GameObject[] Lifes;
+    public int curLifeCount;
 
     // Start is called before the first frame update
     void Start()
@@ -67,10 +74,36 @@ public class UiManager : MonoBehaviour
         roundStartButton = canvas.transform.GetChild(7).gameObject.GetComponent<Button>();
         roundStartButton.onClick.AddListener(gameManager.StartRound);
 
+        var life = canvas.transform.GetChild(9).gameObject;
+        lifePrefab = Resources.Load("UI/LifePrefab") as GameObject;
+        Lifes = new GameObject[15];
+
+        clock = canvas.transform.GetChild(10).gameObject;
+        clock_needle = clock.transform.GetChild(1).gameObject;
+        clock.SetActive(false);
+
+        for (int i = 0; i < 15; ++i)
+        {
+            Lifes[i] = Instantiate(lifePrefab, life.transform) as GameObject;
+            Lifes[i].transform.position = new Vector3(life.transform.position.x - 60 * i, life.transform.position.y, life.transform.position.z);
+            Lifes[i].SetActive(false);
+        }
+
+        curLifeCount = gameManager.LifeCount;
+        for (int i = 0; i < curLifeCount; ++i)
+        {
+            Lifes[i].SetActive(true);
+        }
+
         BossText = canvas.transform.GetChild(8).GetComponent<Text>();
         BossText.gameObject.SetActive(false);
-        goldText = canvas.transform.GetChild(2).GetComponent<Text>();
+
+        var RoundWaveGold = GameObject.Find("RoundWaveGold");
+        RoundText = RoundWaveGold.transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        WaveText = RoundWaveGold.transform.GetChild(1).GetChild(0).GetComponent<Text>();
+        goldText = RoundWaveGold.transform.GetChild(2).GetChild(0).GetComponent<Text>();
         UpdateGoldText();
+        UpdateRoundWave();
     }
 
     public void ShowBossEmergy()
@@ -95,9 +128,30 @@ public class UiManager : MonoBehaviour
         }
     }
 
+    public void StartClock()
+    {
+        clock.SetActive(true);
+        clock_needle.transform.rotation = new Quaternion(0, 0, 0, 0);
+    }
+
+    public void UpdateClock()
+    {
+        if(!clock.activeInHierarchy)
+        {
+            StartClock();
+        }
+        clock_needle.transform.RotateAround(clock_needle.transform.position, Vector3.forward, -360.0f / gameManager.waveDelay * Time.deltaTime);
+    }
+
+    public void StopClock()
+    {
+        clock.SetActive(false);
+    }
+
     public void Update()
     {
-        if(GameManager.instance.roundEnd && enemySpawnerScript.currEnemy == 0)
+        
+        if (GameManager.instance.roundEnd && enemySpawnerScript.currEnemy == 0)
         {
             roundStartButton.gameObject.SetActive(true);
         }
@@ -107,8 +161,26 @@ public class UiManager : MonoBehaviour
         }
     }
 
+    public void SubLifeImage()
+    {
+        curLifeCount--;
+        Lifes[curLifeCount].SetActive(false);
+    }
+
+    public void AddLifeImage()
+    {
+        Lifes[curLifeCount].SetActive(false);
+        curLifeCount++;
+    }
+
+    public void UpdateRoundWave()
+    {
+        WaveText.text = "Wave : " + (gameManager.curWave + 1);
+        RoundText.text = "Round : " + (gameManager.curRound + 1);
+    }
+
     public void UpdateGoldText()
     {
-        goldText.text = "Gold : " + gameManager.Gold.ToString();
+        goldText.text = "Gold : " + GameManager.instance.Gold.ToString();
     }
 }

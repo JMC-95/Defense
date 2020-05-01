@@ -30,8 +30,9 @@ public class GameManager : MonoBehaviour
     public UiManager uiManagerScript;
 
     private float pastTime = 0.0f;
-    private float waveDelay = 5.0f;
-    public int Gold = 300;
+    public float waveDelay = 5.0f;
+    public int Gold = 1000;
+    public int LifeCount = 10;
 
     public int enemyType;
     public int waveCount = 0;
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
     public int curWave;
     public int waveMax;
 
+    public bool needRoundUpdate;
     public bool roundEnd;
 
     //GenInfomation define
@@ -188,6 +190,29 @@ public class GameManager : MonoBehaviour
         GenInfoMation = GetGenInfo();
     }
 
+    public void looseLife()
+    {
+        LifeCount -= 1;
+        if(LifeCount <= 0)
+        {
+            return;
+        }
+        uiManagerScript.SubLifeImage();
+
+        if (LifeCount == 0)
+        {
+            isGameOver = true;
+        }
+    }
+
+    public void GetLife()
+    {
+        if(LifeCount <= 15)
+        {
+            LifeCount += 1;
+            uiManagerScript.AddLifeImage();
+        }
+    }
 
     void Awake()
     {
@@ -206,6 +231,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Gold = 1000;
+        needRoundUpdate = false;
         isWaveEnd = true;
         enemyType = 0;
         waveCount = 0;
@@ -233,7 +259,7 @@ public class GameManager : MonoBehaviour
         roundEnd = false;
     }
 
-    
+
 
     void Update()
     {
@@ -252,6 +278,7 @@ public class GameManager : MonoBehaviour
                         isGameOver = true;
                     }
                 }
+                needRoundUpdate = true;
             }
         }
         else
@@ -268,10 +295,16 @@ public class GameManager : MonoBehaviour
                 {
                     uiManagerScript.ShowBossEmergy();
                 }
-
                 if (pastTime > waveDelay)
                 {
-                    if(uiManagerScript.BossText.gameObject.activeInHierarchy)
+                    uiManagerScript.StopClock();
+                    if (needRoundUpdate)
+                    {
+                        uiManagerScript.UpdateRoundWave();
+                        needRoundUpdate = false;
+                    }
+
+                    if (uiManagerScript.BossText.gameObject.activeInHierarchy)
                     {
                         uiManagerScript.BossText.gameObject.SetActive(false);
                     }
@@ -279,6 +312,10 @@ public class GameManager : MonoBehaviour
                     pastTime = 0.0f;
                     enemySpawnerScript.ResetGenInfo();
                     StartCoroutine(enemySpawnerScript.CreateEnemy());
+                }
+                else
+                {
+                    uiManagerScript.UpdateClock();
                 }
             }
         }

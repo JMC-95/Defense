@@ -58,6 +58,7 @@ public class EnemyDamage : MonoBehaviour
     {
         enemySpawnerScript.currEnemy -= 1;
         gameObject.SetActive(false);
+        gameManager.looseLife();
         Destroy(hpBar);
     }
 
