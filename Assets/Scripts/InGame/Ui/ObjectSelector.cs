@@ -52,7 +52,7 @@ public class ObjectSelector : MonoBehaviour
     {
         TowerSelector.SetActive(true);
         TowerSelector.transform.position = ScreenPos;
-        if(BuildSelector.activeInHierarchy)
+        if (BuildSelector.activeInHierarchy)
         {
             BuildSelector.SetActive(false);
         }
@@ -117,73 +117,106 @@ public class ObjectSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool isSelectObject = false;
+        bool isUseTouch = false;
+        bool isUseMouse = false;
+        Vector3 clickPosition;
 
+        //Detect click
         if (Input.touchCount > 0)
         {
-            if (BuildSelector.activeInHierarchy)
+            isUseTouch = true;
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            isUseMouse = true;
+        }
+
+        //GetPosition
+        if (isUseMouse)
+        {
+            clickPosition = Input.mousePosition;
+
+        }
+        else if (isUseTouch)
+        {
+            clickPosition = Input.GetTouch(0).position;
+        }
+        else
+        {
+            return;
+        }
+
+        //Check Selector on
+        if (BuildSelector.activeInHierarchy )
+        {
+            if(Vector3.Distance(BuildSelector.transform.position, clickPosition) < ButtonTurnOffDist)
             {
-                var mousePosition = Input.GetTouch(0).position;
-                if (GetDist(mousePosition, BuildSelector.transform.position) < ButtonTurnOffDist)
-                {
-                    return;
-                }
+                return;
             }
-
-            GameObject target = null;
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-            var rayCastList = Physics.RaycastAll(ray);
-            Vector3 hitPoint = nonePos;
-
-            for (int i = 0; i < rayCastList.Length; ++i)
+        }
+        if(TowerSelector.activeInHierarchy)
+        {
+            if (Vector3.Distance(TowerSelector.transform.position, clickPosition) < ButtonTurnOffDist)
             {
-                target = rayCastList[i].collider.gameObject;
-                var targetName = target.name;
+                return;
+            }
+        }
 
-                if (targetName.Length >= "TB_BuildingPoint".Length)
+        //Selector raycast
+        GameObject target = null;
+        bool isSelectObject = false;
+
+        Ray ray = Camera.main.ScreenPointToRay(clickPosition);
+        var rayCastList = Physics.RaycastAll(ray);
+        Vector3 hitPoint = nonePos;
+
+        for (int i = 0; i < rayCastList.Length; ++i)
+        {
+            target = rayCastList[i].collider.gameObject;
+            var targetName = target.name;
+
+            if (targetName.Length >= "TB_BuildingPoint".Length)
+            {
+                if (targetName.Substring(0, 16) == "TB_BuildingPoint")
                 {
-                    if (targetName.Substring(0, 16) == "TB_BuildingPoint")
+                    var buildingPoint = target.GetComponent<BuildingPointScript>();
+
+                    if (buildingPoint.OnTower)
                     {
-                        var buildingPoint = target.GetComponent<BuildingPointScript>();
+                        Debug.Log("Select tower!");
 
-                        if (buildingPoint.OnTower)
-                        {
-                            Debug.Log("Select tower!");
+                        isSelectObject = true;
+                        selectedTower = target.transform.GetChild(0).gameObject;
+                        selectedTowerPos = selectedTower.transform.position;
 
-                            isSelectObject = true;
-                            selectedTower = target.transform.GetChild(0).gameObject;
-                            selectedTowerPos = selectedTower.transform.position;
-
-                            showTowerButton(GetTargetScreenPos(selectedTowerPos));
-                            break;
-                        }
-                        else if (buildingPoint.OnCons)
-                        {
-                            Debug.Log("Select cons!");
-                            break;
-                        }
-                        else if (buildingPoint.OnEmpty)
-                        {
-                            Debug.Log("Select building point!");
-
-                            selectedBuildingPoint = target;
-                            selectedBuildPointPos = selectedBuildingPoint.transform.position;
-                            isSelectObject = true;
-                            showBuildButton(GetTargetScreenPos(selectedBuildingPoint));
-                            break;
-                        }
+                        showTowerButton(GetTargetScreenPos(selectedTowerPos));
+                        break;
                     }
-                }              
-                else
-                {
-                    hitPoint = rayCastList[i].point;
+                    else if (buildingPoint.OnCons)
+                    {
+                        Debug.Log("Select cons!");
+                        break;
+                    }
+                    else if (buildingPoint.OnEmpty)
+                    {
+                        Debug.Log("Select building point!");
+
+                        selectedBuildingPoint = target;
+                        selectedBuildPointPos = selectedBuildingPoint.transform.position;
+                        isSelectObject = true;
+                        showBuildButton(GetTargetScreenPos(selectedBuildPointPos));
+                        break;
+                    }
                 }
             }
-            if (!isSelectObject)
+            else
             {
-                turnOffButton(hitPoint);
+                hitPoint = rayCastList[i].point;
             }
+        }
+        if (!isSelectObject)
+        {
+            turnOffButton(hitPoint);
         }
     }
 }

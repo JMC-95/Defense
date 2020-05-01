@@ -12,7 +12,6 @@ public class BuildingOperation : MonoBehaviour
     float yOffset = 50.0f;
     GameObject buildingProgressBar;
     Slider sliderScript;
-    Camera camera;
 
     Vector3 ScreenPos;
     float buildingDuration;
@@ -42,8 +41,7 @@ public class BuildingOperation : MonoBehaviour
         buildingProgressBar.SetActive(true);
         sliderScript = buildingProgressBar.GetComponent<Slider>();
 
-        camera = Camera.main;
-        ScreenPos = camera.WorldToScreenPoint(transform.position);
+        ScreenPos = Camera.main.WorldToScreenPoint(transform.position);
         ScreenPos.y += yOffset;
         sliderScript.value = 0.0f;
 

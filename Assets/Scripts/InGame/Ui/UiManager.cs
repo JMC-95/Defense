@@ -25,7 +25,7 @@ public class UiManager : MonoBehaviour
 
         BuildingProgressBar = Resources.Load("Prefabs/Tower/BuildingProgressBar") as GameObject;
 
-        buildButton = new Button[Type.Tower.Max];
+        buildButton = new Button[Type.BuildingPointUiBotton.Max];
         var BuildButtons = canvas.transform.GetChild(0).gameObject;
         buildButton[Type.BuildingPointUiBotton.Archer] = BuildButtons.transform.GetChild(Type.BuildingPointUiBotton.Archer).gameObject.GetComponent<Button>();
         buildButton[Type.BuildingPointUiBotton.Archer].onClick.AddListener(genTowerSrcipt.GenArcherTowerCons);
