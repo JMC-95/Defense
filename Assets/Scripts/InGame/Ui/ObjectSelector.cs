@@ -119,11 +119,11 @@ public class ObjectSelector : MonoBehaviour
     {
         bool isSelectObject = false;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0)
         {
             if (BuildSelector.activeInHierarchy)
             {
-                var mousePosition = Input.mousePosition;
+                var mousePosition = Input.GetTouch(0).position;
                 if (GetDist(mousePosition, BuildSelector.transform.position) < ButtonTurnOffDist)
                 {
                     return;
@@ -132,7 +132,7 @@ public class ObjectSelector : MonoBehaviour
 
             GameObject target = null;
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             var rayCastList = Physics.RaycastAll(ray);
             Vector3 hitPoint = nonePos;
 
