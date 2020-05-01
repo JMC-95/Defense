@@ -16,6 +16,12 @@ public class UiManager : MonoBehaviour
     Button[] towerButton;
     Button[] towerButtonlv3;
     Button[] towerButtonlv4;
+    Button roundStartButton;
+
+    public Text BossText;
+    EnemySpawner enemySpawnerScript;
+    float changeAlpha = 0.1f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +30,7 @@ public class UiManager : MonoBehaviour
         gameManager = GameManager.Get();
         genTowerSrcipt = GetComponent<GenTower>();
         towerUiScript = GetComponent<TowerUiScript>();
+        enemySpawnerScript = GameObject.Find("EnemySpawnGroup").GetComponent<EnemySpawner>();
 
         BuildingProgressBar = Resources.Load("Prefabs/Tower/BuildingProgressBar") as GameObject;
 
@@ -57,8 +64,47 @@ public class UiManager : MonoBehaviour
         towerButtonlv4[Type.TowerUiBotton.lv4] = towerButtonlv4s.transform.GetChild(Type.TowerUiBotton.lv4).GetComponent<Button>();
         towerButtonlv4[Type.TowerUiBotton.lv4].onClick.AddListener(towerUiScript.Sell);
 
+        roundStartButton = canvas.transform.GetChild(7).gameObject.GetComponent<Button>();
+        roundStartButton.onClick.AddListener(gameManager.StartRound);
+
+        BossText = canvas.transform.GetChild(8).GetComponent<Text>();
+        BossText.gameObject.SetActive(false);
         goldText = canvas.transform.GetChild(2).GetComponent<Text>();
         UpdateGoldText();
+    }
+
+    public void ShowBossEmergy()
+    {
+        BossText.gameObject.SetActive(true);
+        if(changeAlpha > 0.0f)
+        {
+            BossText.color = new Vector4(BossText.color.r, BossText.color.g, BossText.color.b, BossText.color.a - changeAlpha);
+
+            if(BossText.color.a <= 0.0f)
+            {
+                changeAlpha = -changeAlpha;
+            }
+        }
+        else
+        {
+            BossText.color = new Vector4(BossText.color.r, BossText.color.g, BossText.color.b, BossText.color.a - changeAlpha);
+            if (BossText.color.a >= 1.0f)
+            {
+                changeAlpha = -changeAlpha;
+            }
+        }
+    }
+
+    public void Update()
+    {
+        if(GameManager.instance.roundEnd && enemySpawnerScript.currEnemy == 0)
+        {
+            roundStartButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            roundStartButton.gameObject.SetActive(false);
+        }
     }
 
     public void UpdateGoldText()

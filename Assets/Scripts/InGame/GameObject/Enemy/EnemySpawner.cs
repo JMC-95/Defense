@@ -74,6 +74,10 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
+                if(GameManager.instance.curWave == 5)
+                {
+                    GameManager.instance.roundEnd = true;
+                }
                 yield return null;
             }
         }

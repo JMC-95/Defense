@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public UiManager uiManagerScript;
 
     private float pastTime = 0.0f;
-    private float waveDelay = 3.0f;
+    private float waveDelay = 5.0f;
     public int Gold = 300;
 
     public int enemyType;
@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     public int roundMax;
     public int curWave;
     public int waveMax;
+
+    public bool roundEnd;
 
     //GenInfomation define
     private Dictionary<int, Dictionary<int, List<GenInfomation>>> GetGenInfo()
@@ -208,8 +210,10 @@ public class GameManager : MonoBehaviour
         enemyType = 0;
         waveCount = 0;
         curRound = 0;
+        curWave = 0;
         roundMax = 3;
         waveMax = 5;
+        roundEnd = true;
 
         var uiManager = GameObject.Find("UiManager");
         uiManagerScript = uiManager.GetComponent<UiManager>();
@@ -224,6 +228,12 @@ public class GameManager : MonoBehaviour
         uiManagerScript.UpdateGoldText();
     }
 
+    public void StartRound()
+    {
+        roundEnd = false;
+    }
+
+    
 
     void Update()
     {
@@ -231,32 +241,45 @@ public class GameManager : MonoBehaviour
         {
             if (enemySpawnerScript.genCount == enemySpawnerScript.genCountLimit)
             {
-                if (enemySpawnerScript.currEnemy == 0)
+                curWave += 1;
+                isWaveEnd = true;
+                if (curWave > waveMax)
                 {
-                    curWave += 1;
-                    isWaveEnd = true;
-                    if (curWave > waveMax)
+                    curWave = 0;
+                    curRound += 1;
+                    if (curRound > roundMax)
                     {
-                        curWave = 0;
-                        curRound += 1;
-                        if (curRound > roundMax)
-                        {
-                            isGameOver = true;
-                        }
+                        isGameOver = true;
                     }
                 }
             }
         }
         else
         {
-            pastTime += Time.deltaTime;
-
-            if (pastTime > waveDelay)
+            if (!roundEnd)
             {
-                isWaveEnd = false;
-                pastTime = 0.0f;
-                enemySpawnerScript.ResetGenInfo();
-                StartCoroutine(enemySpawnerScript.CreateEnemy());
+                if (curWave == 5 && enemySpawnerScript.currEnemy != 0)
+                {
+                    return;
+                }
+                pastTime += Time.deltaTime;
+
+                if (curWave == 5)
+                {
+                    uiManagerScript.ShowBossEmergy();
+                }
+
+                if (pastTime > waveDelay)
+                {
+                    if(uiManagerScript.BossText.gameObject.activeInHierarchy)
+                    {
+                        uiManagerScript.BossText.gameObject.SetActive(false);
+                    }
+                    isWaveEnd = false;
+                    pastTime = 0.0f;
+                    enemySpawnerScript.ResetGenInfo();
+                    StartCoroutine(enemySpawnerScript.CreateEnemy());
+                }
             }
         }
     }
