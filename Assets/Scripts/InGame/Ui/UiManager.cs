@@ -79,6 +79,9 @@ public class UiManager : MonoBehaviour
         Lifes = new GameObject[15];
 
         clock = canvas.transform.GetChild(10).gameObject;
+        var clockButton = clock.GetComponent<Button>();
+        clockButton.onClick.AddListener(clockEarlyStop);
+
         clock_needle = clock.transform.GetChild(1).gameObject;
         clock.SetActive(false);
 
@@ -104,6 +107,15 @@ public class UiManager : MonoBehaviour
         goldText = RoundWaveGold.transform.GetChild(2).GetChild(0).GetComponent<Text>();
         UpdateGoldText();
         UpdateRoundWave();
+    }
+
+    public void clockEarlyStop()
+    {
+        Debug.Log("clock early stopped!");
+        var remainTime = gameManager.waveDelay - gameManager.pastTime;
+        gameManager.UseGold(-(int)remainTime * 100);
+        StopClock();
+        gameManager.pastTime = gameManager.waveDelay;
     }
 
     public void ShowBossEmergy()

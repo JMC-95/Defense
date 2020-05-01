@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public EnemySpawner enemySpawnerScript;
     public UiManager uiManagerScript;
 
-    private float pastTime = 0.0f;
+    public float pastTime = 0.0f;
     public float waveDelay = 5.0f;
     public int Gold = 1000;
     public int LifeCount = 10;

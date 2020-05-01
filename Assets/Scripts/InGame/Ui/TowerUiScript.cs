@@ -20,7 +20,7 @@ public class TowerUiScript : MonoBehaviour
         towerSelector[Type.TowerUiBotton.Lv4] = canvas.transform.GetChild(6).gameObject;
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        genTowerScript = canvas.transform.GetChild(4).GetComponent<GenTower>();
+        genTowerScript = GameObject.Find("UiManager").GetComponent<GenTower>();
     }
 
     public void Sell()
