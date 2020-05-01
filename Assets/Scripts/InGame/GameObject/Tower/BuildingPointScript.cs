@@ -8,10 +8,18 @@ public class BuildingPointScript : MonoBehaviour
     public bool OnEmpty { get; set; } = true;
     public bool OnCons { get; set; } = false;
 
-    public void BuildStart()
+    public int TowerType;
+
+    private void Start()
+    {
+        TowerType = -1;
+    }
+
+    public void BuildStart(int towerType)
     {
         OnEmpty = false;
         OnCons = true;
+        TowerType = towerType;
     }
 
     public void BuildComplete()
@@ -24,6 +32,7 @@ public class BuildingPointScript : MonoBehaviour
     {
         OnTower = false;
         OnEmpty = true;
+        TowerType = -1;
     }
 
     public void Upgrade()

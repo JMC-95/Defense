@@ -16,19 +16,27 @@ public class ObjectSelector : MonoBehaviour
     public Vector3 selectedBuildPointPos;
 
     //Tower
-    GameObject TowerSelector;
+    GameObject[] TowerSelector;
     public GameObject selectedTower = null;
     public Vector3 selectedTowerPos;
 
     public Vector3 nonePos;
+    public int activatedTowerSelectorNum;
 
     private void Start()
     {
         var canvas = GameObject.Find("Canvas");
         BuildSelector = canvas.transform.GetChild(0).gameObject;
         BuildSelector.SetActive(false);
-        TowerSelector = canvas.transform.GetChild(1).gameObject;
-        TowerSelector.SetActive(false);
+
+        TowerSelector = new GameObject[3];
+        TowerSelector[Type.TowerUiBotton.Generall] = canvas.transform.GetChild(1).gameObject;
+        TowerSelector[Type.TowerUiBotton.Generall].SetActive(false);
+        TowerSelector[Type.TowerUiBotton.Lv3] = canvas.transform.GetChild(5).gameObject;
+        TowerSelector[Type.TowerUiBotton.Lv3].SetActive(false);
+        TowerSelector[Type.TowerUiBotton.Lv4] = canvas.transform.GetChild(6).gameObject;
+        TowerSelector[Type.TowerUiBotton.Lv4].SetActive(false);
+        activatedTowerSelectorNum = -1;
 
         CameraPanel = canvas.transform.GetChild(3).gameObject;
 
@@ -46,15 +54,17 @@ public class ObjectSelector : MonoBehaviour
     {
         BuildSelector.SetActive(true);
         BuildSelector.transform.position = ScreenPos;
-        if (TowerSelector.activeInHierarchy)
+        if (activatedTowerSelectorNum != -1)
         {
-            TowerSelector.SetActive(false);
+            TowerSelector[activatedTowerSelectorNum].SetActive(false);
         }
     }
-    void showTowerButton(Vector3 ScreenPos)
+    void showTowerButton(Vector3 ScreenPos, int mode)
     {
-        TowerSelector.SetActive(true);
-        TowerSelector.transform.position = ScreenPos;
+        TowerSelector[mode].SetActive(true);
+        TowerSelector[mode].transform.position = ScreenPos;
+        activatedTowerSelectorNum = mode;
+
         if (BuildSelector.activeInHierarchy)
         {
             BuildSelector.SetActive(false);
@@ -81,16 +91,17 @@ public class ObjectSelector : MonoBehaviour
             }
         }
 
-        if (selectedTower)
+        if (activatedTowerSelectorNum != -1)
         {
-            var buttonPosition = TowerSelector.transform.position;
+            var buttonPosition = TowerSelector[activatedTowerSelectorNum].transform.position;
 
             var dist = GetDist(buttonPosition, hitPoint);
             if (dist > ButtonTurnOffDist)
             {
                 selectedTowerPos = nonePos;
                 selectedTower = null;
-                TowerSelector.SetActive(false);
+                TowerSelector[activatedTowerSelectorNum].SetActive(false);
+                activatedTowerSelectorNum = -1;
             }
         }
 
@@ -124,7 +135,7 @@ public class ObjectSelector : MonoBehaviour
         bool isUseMouse = false;
         Vector3 clickPosition;
 
-        if(BuildSelector.activeInHierarchy || TowerSelector.activeInHierarchy)
+        if (BuildSelector.activeInHierarchy || activatedTowerSelectorNum != -1)
         {
             CameraPanel.SetActive(false);
         }
@@ -159,23 +170,23 @@ public class ObjectSelector : MonoBehaviour
         }
 
         //Check Selector on
-        if (BuildSelector.activeInHierarchy )
+        if (BuildSelector.activeInHierarchy)
         {
             if (Vector3.Distance(BuildSelector.transform.position, clickPosition) < ButtonTurnOffDist)
             {
                 return;
             }
         }
-        if(TowerSelector.activeInHierarchy)
+        if (activatedTowerSelectorNum != -1)
         {
-            if (Vector3.Distance(TowerSelector.transform.position, clickPosition) < ButtonTurnOffDist)
+            if (Vector3.Distance(TowerSelector[activatedTowerSelectorNum].transform.position, clickPosition) < ButtonTurnOffDist)
             {
                 return;
             }
         }
 
-       //Selector raycast
-       GameObject target = null;
+        //Selector raycast
+        GameObject target = null;
         bool isSelectObject = false;
 
         Ray ray = Camera.main.ScreenPointToRay(clickPosition);
@@ -198,21 +209,37 @@ public class ObjectSelector : MonoBehaviour
                         Debug.Log("Select tower!");
 
                         isSelectObject = true;
+                        int towerType = buildingPoint.TowerType;
+                        selectedBuildingPoint = target;
+                        selectedBuildPointPos = target.transform.position;
                         selectedTower = target.transform.GetChild(0).gameObject;
                         selectedTowerPos = selectedTower.transform.position;
 
-                        showTowerButton(GetTargetScreenPos(selectedTowerPos));
+                        if(Type.Tower.GetTowerLv(towerType) == 3)
+                        {
+                            showTowerButton(GetTargetScreenPos(selectedTowerPos), Type.TowerUiBotton.Lv3);
+                        }
+                        else if(Type.Tower.GetTowerLv(towerType) == 4)
+                        {
+                            showTowerButton(GetTargetScreenPos(selectedTowerPos), Type.TowerUiBotton.Lv4);
+                        }
+                        else
+                        {
+                            showTowerButton(GetTargetScreenPos(selectedTowerPos), Type.TowerUiBotton.Generall);
+                        }
                         break;
                     }
                     else if (buildingPoint.OnCons)
                     {
                         Debug.Log("Select cons!");
+                        activatedTowerSelectorNum = -1;
                         break;
                     }
                     else if (buildingPoint.OnEmpty)
                     {
                         Debug.Log("Select building point!");
 
+                        activatedTowerSelectorNum = -1;
                         selectedBuildingPoint = target;
                         selectedBuildPointPos = selectedBuildingPoint.transform.position;
                         isSelectObject = true;

@@ -98,8 +98,14 @@ public class GenTower : MonoBehaviour
         {
             Debug.Log("You can't build! : Low gold");
             objectSelector.selectedBuildingPoint = null;
+            objectSelector.selectedTower = null;
             ButtonSellector.SetActive(false);
             return;
+        }
+
+        if (objectSelector.selectedTower)
+        {
+            Destroy(objectSelector.selectedTower);
         }
 
         gameManager.UseGold(cost);
@@ -109,7 +115,7 @@ public class GenTower : MonoBehaviour
         cons.transform.parent = objectSelector.selectedBuildingPoint.transform;
         cons.name = Type.Tower.GetTowerName(towerType) + "Cons";
 
-        objectSelector.selectedBuildingPoint.GetComponent<BuildingPointScript>().BuildStart();
+        objectSelector.selectedBuildingPoint.GetComponent<BuildingPointScript>().BuildStart(towerType);
         objectSelector.selectedBuildingPoint = null;
         ButtonSellector.SetActive(false);
 

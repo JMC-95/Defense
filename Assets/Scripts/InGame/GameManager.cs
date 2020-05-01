@@ -164,11 +164,10 @@ public class GameManager : MonoBehaviour
 
     static public GameManager Get()
     {
-        if (!instance)
-        {
-            return instance = new GameManager();
-        }
-
+        //if (!instance)
+        //{
+        //    return instance = new GameManager();
+        //}
         return instance;
     }
 
@@ -204,6 +203,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Gold = 1000;
         isWaveEnd = true;
         enemyType = 0;
         waveCount = 0;

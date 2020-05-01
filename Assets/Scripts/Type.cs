@@ -137,6 +137,82 @@ namespace Type
 
             return 0;
         }
+
+        public static int GetTotalPrice(int towerType)
+        {
+            if (towerType == Archerlv1)
+                return 100;
+            if (towerType == Archerlv2)
+                return 300;
+            if (towerType == Archerlv3)
+                return 600;
+            if (towerType == Archerlv4A)
+                return 1000;
+            if (towerType == Archerlv4B)
+                return 1000;
+
+            if (towerType == Canonlv1)
+                return 100;
+            if (towerType == Canonlv2)
+                return 300;
+            if (towerType == Canonlv3)
+                return 600;
+            if (towerType == Canonlv4A)
+                return 1000;
+            if (towerType == Canonlv4B)
+                return 1000;
+
+            if (towerType == Magelv1)
+                return 100;
+            if (towerType == Magelv2)
+                return 300;
+            if (towerType == Magelv3)
+                return 600;
+            if (towerType == Magelv4A)
+                return 1000;
+            if (towerType == Magelv4B)
+                return 1000;
+
+            return 0;
+        }
+
+        public static int GetTowerLv(int towerType)
+        {
+            if (towerType == Archerlv1)
+                return 1;
+            if (towerType == Archerlv2)
+                return 2;
+            if (towerType == Archerlv3)
+                return 3;
+            if (towerType == Archerlv4A)
+                return 4;
+            if (towerType == Archerlv4B)
+                return 4;
+
+            if (towerType == Canonlv1)
+                return 1;
+            if (towerType == Canonlv2)
+                return 2;
+            if (towerType == Canonlv3)
+                return 3;
+            if (towerType == Canonlv4A)
+                return 4;
+            if (towerType == Canonlv4B)
+                return 4;
+
+            if (towerType == Magelv1)
+                return 1;
+            if (towerType == Magelv2)
+                return 2;
+            if (towerType == Magelv3)
+                return 3;
+            if (towerType == Magelv4A)
+                return 4;
+            if (towerType == Magelv4B)
+                return 4;
+
+            return -1;
+        }
     }
 
     class BuildingPointUiBotton
@@ -149,9 +225,23 @@ namespace Type
 
     class TowerUiBotton
     {
+        //Mode
+        public static int Generall = 0;
+        public static int Lv3 = 1;
+        public static int Lv4 = 2;
+
+        //General Button
         public static int Upgrade = 0;
         public static int Sell = 1;
         public static int Max = Sell + 1;
+
+        //Lv3 Button
+        public static int lv3A = 0;
+        public static int lv3B = 1;
+        public static int lv3Sell = 2;
+
+        //Lv4 Button
+        public static int lv4 = 0;
     }
 
     class Line
