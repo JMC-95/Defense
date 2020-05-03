@@ -11,17 +11,23 @@ public class EnemyMove : MonoBehaviour
     public Transform[] rightPath;
 
     public int Gold;
+    public int Speed;
+    public int Line;
+    public bool isArleaySlow = false;
 
     void OnDrawGizmos()
     {
         iTween.DrawPath(middlePath);
         iTween.DrawPath(leftPath);
         iTween.DrawPath(rightPath);
-    }   
+    }
 
-    public void Init(int line, int Speed,int gold)
+    public void Init(int line, int speed, int gold)
     {
+        Speed = speed;
         Gold = gold;
+        Line = line;
+        isArleaySlow = false;
 
         var middlePoint = GameObject.Find("MiddleWayPoint");
         var leftPoint = GameObject.Find("LeftWayPoint");
@@ -39,6 +45,7 @@ public class EnemyMove : MonoBehaviour
                 rightPath = monsterObj[line].GetComponentsInChildren<Transform>();
         }
 
+
         switch (line)
         {
             case 0:
@@ -50,6 +57,27 @@ public class EnemyMove : MonoBehaviour
             case 2:
                 iTween.MoveTo(gameObject, iTween.Hash("path", rightPath, "speed", Speed, "orienttopath", true, "looktime", 0.6, "easetype", iTween.EaseType.linear, "movetopath", true));
                 break;
+        }
+    }
+
+    public void ResetSlow()
+    {
+        isArleaySlow = false;
+        iTween.MoveTo(gameObject, iTween.Hash("speed", Speed));
+    }
+
+    public void SetSlow(int slowValue)
+    {
+        if (!isArleaySlow)
+        {
+            isArleaySlow = true;
+            int speed = Speed - slowValue;
+            if (speed < 0)
+            {
+                speed = 1;
+            }
+
+            iTween.MoveTo(gameObject, iTween.Hash("speed", speed));
         }
     }
 

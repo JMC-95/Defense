@@ -25,7 +25,7 @@ public class UiManager : MonoBehaviour
 
     public Text BossText;
     EnemySpawner enemySpawnerScript;
-    float changeAlpha = 0.1f;
+    float changeAlpha = 0.01f;
 
     public GameObject[] Lifes;
     public int curLifeCount;
