@@ -12,6 +12,9 @@ public class CanonLocketSpawn : MonoBehaviour
     [SerializeField] private float fireTimeMin = 0f;                 //발사 주기(최소)
     [SerializeField] private float fireTimeMax = 1.0f;               //발사 주기(최대)    //5초마다 쏘겠다
 
+    [SerializeField] public int roundDamage;
+    [SerializeField] public int splashDamage;
+
     public float theta = 45f;   //각도
     public float gravity;       //중력값
     public float v0;
@@ -57,6 +60,8 @@ public class CanonLocketSpawn : MonoBehaviour
 
                     //rigidbody.velocity = velocity * v0;
                     aBolt.GetComponent<CanonLocket>().SetVelocity(velocity * v0);
+                    aBolt.GetComponent<CanonLocket>().roundDamage = roundDamage;
+                    aBolt.GetComponent<CanonLocket>().splashDamage = splashDamage;
 
                     aBolt.gameObject.SetActive(true);
 

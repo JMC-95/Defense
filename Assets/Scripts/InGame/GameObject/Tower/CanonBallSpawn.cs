@@ -12,6 +12,9 @@ public class CanonBallSpawn : MonoBehaviour
     [SerializeField] private float fireTimeMin = 0f;                 //발사 주기(최소)
     [SerializeField] private float fireTimeMax = 1.0f;               //발사 주기(최대)    //5초마다 쏘겠다
 
+    [SerializeField] public int roundDamage;
+    [SerializeField] public int splashDamage;
+
     public float theta = 45f;   //각도
     public float gravity;       //중력값
     public float v0;
@@ -57,6 +60,8 @@ public class CanonBallSpawn : MonoBehaviour
 
                     //rigidbody.velocity = velocity * v0;
                     aBolt.GetComponent<CanonBall>().SetVelocity(velocity * v0);
+                    aBolt.GetComponent<CanonBall>().roundDamage = roundDamage;
+                    aBolt.GetComponent<CanonBall>().splashDamage = splashDamage;
 
                     aBolt.gameObject.SetActive(true);
 

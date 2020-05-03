@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CanonBall : MonoBehaviour
 {
-    public int damage = 11;
+    public int roundDamage;
+    public int splashDamage;
     public float gravity;
 
     public Rigidbody canonRigidBody;
@@ -50,7 +51,7 @@ public class CanonBall : MonoBehaviour
                 if (hit.gameObject.tag == "ENEMY")
                 {
                     var enemyDamage = hit.GetComponent<EnemyDamage>();
-                    enemyDamage.CurHp -= damage;
+                    enemyDamage.CurHp -= roundDamage;
 
                     enemyDamage.hpBarImage.fillAmount = enemyDamage.CurHp / (float)enemyDamage.InitHp;
 
@@ -69,7 +70,7 @@ public class CanonBall : MonoBehaviour
                     if (hit.GetComponent<EnemyAI>().state != EnemyAI.State.Die)
                     {
                         var enemyDamage = hit.GetComponent<EnemyDamage>();
-                        enemyDamage.CurHp -= damage;
+                        enemyDamage.CurHp -= splashDamage;
 
                         enemyDamage.hpBarImage.fillAmount = enemyDamage.CurHp / (float)enemyDamage.InitHp;
 

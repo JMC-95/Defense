@@ -14,6 +14,9 @@ public class CanonMissileSpawn : MonoBehaviour
 
     [SerializeField] private float delayTimeMin = 0f;                 //발사 주기(최소)
     [SerializeField] private float delayTimeMax = 0.2f;               //발사 주기(최대)
+    [SerializeField] public int roundDamage;
+    [SerializeField] public int splashDamage;
+
     private int Firecount = 0;
 
     public float theta = 45f;   //각도
@@ -66,6 +69,8 @@ public class CanonMissileSpawn : MonoBehaviour
                         var dist = Vector3.Distance(cannon.transform.position, target.transform.position);
                         v0 = Mathf.Sqrt(gravity * dist / Mathf.Sin(Radian(2 * theta)));
                         aBolt.GetComponent<CanonMissile>().SetVelocity(velocity * v0);
+                        aBolt.GetComponent<CanonMissile>().roundDamage = roundDamage;
+                        aBolt.GetComponent<CanonMissile>().splashDamage = splashDamage;
 
                         aBolt.gameObject.SetActive(true);
 

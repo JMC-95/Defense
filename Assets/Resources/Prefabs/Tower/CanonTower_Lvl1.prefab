@@ -106,6 +106,8 @@ MonoBehaviour:
   firePos: {fileID: 3564851279710077844}
   fireTimeMin: 0
   fireTimeMax: 5
+  roundDamage: 10
+  splashDamage: 10
   theta: 45
   gravity: 0
   v0: 0

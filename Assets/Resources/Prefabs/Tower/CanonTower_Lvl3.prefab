@@ -44,7 +44,9 @@ MonoBehaviour:
   gunBarrel: {fileID: 3371012764167442709}
   firePos: {fileID: 3564851279710077844}
   fireTimeMin: 0
-  fireTimeMax: 1
+  fireTimeMax: 5
+  roundDamage: 25
+  splashDamage: 25
   theta: 45
   gravity: 0
   v0: 0

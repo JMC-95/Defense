@@ -12,6 +12,7 @@ public class ArrowSpawnTwoShooter : MonoBehaviour
     private List<GameObject> collEnemys = new List<GameObject>();    //사거리 내에 들어온(충돌한) 객체를 담을 리스트
     [SerializeField] private float fireTimeMin = 0f;                 //발사 주기(최소)
     [SerializeField] private float fireTimeMax = 1.0f;               //발사 주기(최대)    //1초마다 쏘겠다
+    [SerializeField] public int damage;                              //데미지
     private Vector3 targetPositionRight;
     private Vector3 targetPositionLeft;
 
@@ -39,6 +40,7 @@ public class ArrowSpawnTwoShooter : MonoBehaviour
                         arrowRight.transform.position = firePosRight.position;                    //미사일 생성 포지션
                         arrowRight.transform.rotation = target.transform.rotation;           //미사일 생성 회전값
                         arrowRight.GetComponent<Arrow>().m_target = target;                  //미사일에게 타겟 전달
+                        arrowRight.GetComponent<Arrow>().damage = damage;                  
                         arrowRight.SetActive(true);
                     }
 
@@ -48,6 +50,7 @@ public class ArrowSpawnTwoShooter : MonoBehaviour
                         arrowLeft.transform.position = firePosLeft.position;                    //미사일 생성 포지션
                         arrowLeft.transform.rotation = target.transform.rotation;           //미사일 생성 회전값
                         arrowLeft.GetComponent<Arrow>().m_target = target;                  //미사일에게 타겟 전달
+                        arrowLeft.GetComponent<Arrow>().damage = damage;                  
                         arrowLeft.SetActive(true);
                     }
                 }

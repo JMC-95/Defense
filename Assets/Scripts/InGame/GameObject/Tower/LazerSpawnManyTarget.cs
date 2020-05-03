@@ -49,7 +49,7 @@ public class LazerSpawnManyTarget : MonoBehaviour
                 RaycastHit hit;
 
                 //레이캐스트 쏘는 위치, 방향, 결과값, 최대인식거리
-                Physics.Raycast(transform.position, (target.transform.position - transform.position).normalized, out hit, 200, layerMask );
+                Physics.Raycast(transform.position, (target.transform.position - transform.position).normalized, out hit, 300, layerMask );
 
                 //거리에 따른 레이저 스케일 변화
                 ScaleDistance.transform.localScale = new Vector3(1, hit.distance + 5, 1);
@@ -61,7 +61,7 @@ public class LazerSpawnManyTarget : MonoBehaviour
                 RayResult.transform.position = hit.point;
 
                 //해당하는 오브젝트의 회전값을 닿은 면적의 노멀방향와 일치시킨다.
-                RayResult.transform.rotation = Quaternion.LookRotation(hit.normal);
+                //RayResult.transform.rotation = Quaternion.LookRotation(hit.normal);
 
 
                 var enemyDamage = target.GetComponent<EnemyDamage>();

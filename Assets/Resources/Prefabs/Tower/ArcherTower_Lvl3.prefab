@@ -45,6 +45,7 @@ MonoBehaviour:
   firePos: {fileID: 8926191425579060734}
   fireTimeMin: 0
   fireTimeMax: 1
+  damage: 20
 --- !u!1 &8926191423686138782
 GameObject:
   m_ObjectHideFlags: 0

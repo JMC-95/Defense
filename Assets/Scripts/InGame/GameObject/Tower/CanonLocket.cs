@@ -7,7 +7,8 @@ public class CanonLocket : MonoBehaviour
     public Rigidbody canonRigidBody;
     public float gravity;
     public Vector3 velocity;
-    public int damage = 30;
+    public int roundDamage;
+    public int splashDamage;
 
     public void SetVelocity(Vector3 _velocity)
     {
@@ -51,7 +52,7 @@ public class CanonLocket : MonoBehaviour
                 {
                     var enemyDamage = hit.GetComponent<EnemyDamage>();
                     {
-                        enemyDamage.CurHp -= damage;
+                        enemyDamage.CurHp -= roundDamage;
 
                         enemyDamage.hpBarImage.fillAmount = enemyDamage.CurHp / (float)enemyDamage.InitHp;
 
@@ -70,7 +71,7 @@ public class CanonLocket : MonoBehaviour
                 {
                     var enemyDamage = hit.GetComponent<EnemyDamage>();
                     {
-                        enemyDamage.CurHp -= damage;
+                        enemyDamage.CurHp -= splashDamage;
 
                         enemyDamage.hpBarImage.fillAmount = enemyDamage.CurHp / (float)enemyDamage.InitHp;
 

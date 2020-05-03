@@ -13,8 +13,8 @@ public class EnemyDamage : MonoBehaviour
     private Canvas uiCanvas;
     public Image hpBarImage;
 
-    public int CurHp;
-    public int InitHp;
+    public float CurHp;
+    public float InitHp;
 
     public bool isDie;
 
