@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GamePlay : MonoBehaviour
 {
-    public void OnClickStartBtn()
+    public void OnClickInGameBtn()
     {
-        SceneManager.LoadScene("InGame");
+        SceneManager.LoadScene("InGame",LoadSceneMode.Single);
+    }
+
+    public void OnClickMainBtn()
+    {
+        SceneManager.LoadScene("Main",LoadSceneMode.Single);
     }
 }
