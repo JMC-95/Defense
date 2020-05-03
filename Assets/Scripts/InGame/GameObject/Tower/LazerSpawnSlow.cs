@@ -29,7 +29,7 @@ public class LazerSpawnSlow : MonoBehaviour
 
                 enemyDamage.CurHp -= damage * Time.deltaTime;
                 enemyDamage.hpBarImage.fillAmount = enemyDamage.CurHp / (float)enemyDamage.InitHp;
-                enemyMove.SetSlow(1);
+                enemyMove.SetSlow(20);
 
                 if (enemyDamage.CurHp <= 0.0f)
                 {

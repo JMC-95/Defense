@@ -14,6 +14,13 @@ public class EnemyMove : MonoBehaviour
     public int Speed;
     public int Line;
     public bool isArleaySlow = false;
+    public bool isResetSlow = false;
+
+    float curSpeed;
+    float slowSpeed;
+    float originSpeed;
+
+    public int debug = 10;
 
     void OnDrawGizmos()
     {
@@ -28,6 +35,7 @@ public class EnemyMove : MonoBehaviour
         Gold = gold;
         Line = line;
         isArleaySlow = false;
+        isResetSlow = false;
 
         var middlePoint = GameObject.Find("MiddleWayPoint");
         var leftPoint = GameObject.Find("LeftWayPoint");
@@ -46,7 +54,7 @@ public class EnemyMove : MonoBehaviour
         }
 
 
-        switch (line)
+        switch (Line)
         {
             case 0:
                 iTween.MoveTo(gameObject, iTween.Hash("path", leftPath, "speed", Speed, "orienttopath", true, "looktime", 0.6, "easetype", iTween.EaseType.linear, "movetopath", true));
@@ -60,24 +68,47 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
+    public void LateUpdate()
+    {
+        var itween = GetComponent<iTween>();
+        if (itween)
+        {
+            if (isArleaySlow)
+            {
+                if (curSpeed < slowSpeed)
+                {
+                    itween.time = itween.time + 0.01f;
+                    curSpeed = itween.time;
+                }
+            }
+
+            if (isResetSlow)
+            {
+                if (curSpeed > originSpeed)
+                {
+                    itween.time = itween.time - 0.01f;
+                    curSpeed = itween.time;
+                }
+
+            }
+        }
+    }
+
     public void ResetSlow()
     {
         isArleaySlow = false;
-        iTween.MoveTo(gameObject, iTween.Hash("speed", Speed));
+        isResetSlow = true;
     }
 
-    public void SetSlow(int slowValue)
+    public void SetSlow(float slowValue)
     {
         if (!isArleaySlow)
         {
             isArleaySlow = true;
-            int speed = Speed - slowValue;
-            if (speed < 0)
-            {
-                speed = 1;
-            }
 
-            iTween.MoveTo(gameObject, iTween.Hash("speed", speed));
+            originSpeed = GetComponent<iTween>().time;
+            curSpeed = originSpeed;
+            slowSpeed = originSpeed + originSpeed * slowValue / 100.0f;
         }
     }
 
