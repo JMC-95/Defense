@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public bool isWaveEnd = true;
     public bool isGameOver = false;
     public bool isGameVictory = false;
+    public bool SceneChanged = false;
 
     [Header("Enemy Resources")]
     public GameObject[] enemyPrefabs;
@@ -192,10 +193,6 @@ public class GameManager : MonoBehaviour
     {
         LifeCount -= 1;
 
-        if(LifeCount == 1)
-        {
-            return;
-        }
         uiManagerScript.SubLifeImage();
 
         if (LifeCount == 0)
@@ -206,7 +203,7 @@ public class GameManager : MonoBehaviour
 
     public void GetLife()
     {
-        if(LifeCount <= 15)
+        if (LifeCount <= 15)
         {
             LifeCount += 1;
             uiManagerScript.AddLifeImage();
@@ -224,12 +221,13 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
-    void Start()
+    public void Start()
     {
         Gold = 1000;
+        SceneChanged = false;
         needRoundUpdate = false;
         isWaveEnd = true;
         enemyType = 0;
@@ -258,25 +256,30 @@ public class GameManager : MonoBehaviour
         roundEnd = false;
     }
 
-
+    private void LateUpdate()
+    {
+        if(!SceneChanged)
+        {
+            if (isGameOver)
+            {
+                Debug.Log("Scene change");
+                SceneManager.LoadScene("DefeatScene");
+                SceneChanged = true;
+            }
+            if (isGameVictory)
+            {
+                Debug.Log("Scene change");
+                SceneManager.LoadScene("VictoryScene");
+                SceneChanged = true;
+            }
+        }
+    }
 
     void Update()
     {
-
-        if(isGameOver || isGameVictory)
+        if (isGameOver || isGameVictory)
         {
-            pastTime += Time.deltaTime;
-            if(pastTime > 5.0f)
-            {
-                if(isGameOver)
-                {
-                    SceneManager.LoadScene("VictoryScene");
-                }
-                else if(isGameVictory)
-                {
-                    SceneManager.LoadScene("DefeatScene");
-                }
-            }
+            return;
         }
 
         if (!isGameOver && !isWaveEnd)

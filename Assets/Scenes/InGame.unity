@@ -2484,6 +2484,7 @@ GameObject:
   - component: {fileID: 635093738}
   - component: {fileID: 635093741}
   - component: {fileID: 635093740}
+  - component: {fileID: 635093742}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2514,6 +2515,7 @@ MonoBehaviour:
   waveCount: 0
   isWaveEnd: 0
   isGameOver: 0
+  isGameVictory: 0
   enemyPrefabs: []
   bagicPath: Prefabs/Enemy/
   enemyStrList: []
@@ -2584,6 +2586,19 @@ MonoBehaviour:
   maxPool: 10
   canonHitEffectPool: []
   canonFireEffectPool: []
+--- !u!114 &635093742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635093737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee8f7a4a33de4f148b06534a22ba2819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips: []
 --- !u!4 &637019233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7c6849453a986974b9683393c325ade9,
