@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public struct GenInfomation
 {
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     public bool isWaveEnd = true;
     public bool isGameOver = false;
+    public bool isGameVictory = false;
 
     [Header("Enemy Resources")]
     public GameObject[] enemyPrefabs;
@@ -168,10 +170,6 @@ public class GameManager : MonoBehaviour
 
     static public GameManager Get()
     {
-        //if (!instance)
-        //{
-        //    return instance = new GameManager();
-        //}
         return instance;
     }
 
@@ -193,10 +191,6 @@ public class GameManager : MonoBehaviour
     public void looseLife()
     {
         LifeCount -= 1;
-        if(LifeCount <= 0)
-        {
-            return;
-        }
         uiManagerScript.SubLifeImage();
 
         if (LifeCount == 0)
@@ -263,6 +257,23 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+
+        if(isGameOver || isGameVictory)
+        {
+            pastTime += Time.deltaTime;
+            if(pastTime > 5.0f)
+            {
+                if(isGameOver)
+                {
+                    SceneManager.LoadScene("VictoryScene");
+                }
+                else if(isGameVictory)
+                {
+                    SceneManager.LoadScene("DefeatScene");
+                }
+            }
+        }
+
         if (!isGameOver && !isWaveEnd)
         {
             if (enemySpawnerScript.genCount == enemySpawnerScript.genCountLimit)
@@ -275,7 +286,8 @@ public class GameManager : MonoBehaviour
                     curRound += 1;
                     if (curRound > roundMax)
                     {
-                        isGameOver = true;
+                        pastTime = 0.0f;
+                        isGameVictory = true;
                     }
                 }
                 needRoundUpdate = true;
