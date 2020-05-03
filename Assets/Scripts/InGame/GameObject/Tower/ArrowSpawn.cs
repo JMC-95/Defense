@@ -13,6 +13,14 @@ public class ArrowSpawn : MonoBehaviour
     [SerializeField] public int damage;                              //데미지
     private Vector3 targetPosition;
 
+    public AudioClip ArrowShot;
+    AudioSource arrowAudio;
+
+    void Start()
+    {
+        arrowAudio = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         fireTimeMin += Time.deltaTime;  //발사주기 갱신
@@ -28,7 +36,7 @@ public class ArrowSpawn : MonoBehaviour
                 if (fireTimeMin > fireTimeMax)
                 {
                     fireTimeMin = 0.0f;
-         
+                    
                     var arrow = BulletManager.instance.GetArrow();  //미사일 생성
                     if (arrow != null)
                     {
@@ -37,6 +45,7 @@ public class ArrowSpawn : MonoBehaviour
                         arrow.GetComponent<Arrow>().m_target = target;                  //미사일에게 타겟 전달
                         arrow.GetComponent<Arrow>().damage = damage;
                         arrow.SetActive(true);
+                        arrowAudio.Play();
                     }  
                 }
             }

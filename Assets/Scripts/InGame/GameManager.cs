@@ -191,6 +191,11 @@ public class GameManager : MonoBehaviour
     public void looseLife()
     {
         LifeCount -= 1;
+
+        if(LifeCount == 1)
+        {
+            return;
+        }
         uiManagerScript.SubLifeImage();
 
         if (LifeCount == 0)

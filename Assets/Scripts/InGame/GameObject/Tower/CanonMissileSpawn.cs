@@ -23,8 +23,12 @@ public class CanonMissileSpawn : MonoBehaviour
     public float gravity;       //중력값
     public float v0;
 
+    public AudioClip canonShot;
+    AudioSource canonAudio;
+
     void Start()    //초기화
     {
+        canonAudio = GetComponent<AudioSource>();
         gravity = 50.0f;
         theta = 45f;
     }
@@ -73,6 +77,7 @@ public class CanonMissileSpawn : MonoBehaviour
                         aBolt.GetComponent<CanonMissile>().splashDamage = splashDamage;
 
                         aBolt.gameObject.SetActive(true);
+                        canonAudio.Play();
 
                         //이펙트 생성
                         var fireEffect = EffectManager.instance.GetCanonFire();  

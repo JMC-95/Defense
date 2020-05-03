@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8867332103561662016}
   - component: {fileID: 2686680501704344616}
   m_Layer: 0
-  m_Name: Canon_Lvl1
+  m_Name: CanonBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,10 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffbd553b578fadf42b0d7b107389c79c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canonRigidBody: {fileID: 0}
+  roundDamage: 0
+  splashDamage: 0
   gravity: 0
+  canonRigidBody: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
-  damage: 30
+  explosion: {fileID: 0}
 --- !u!136 &8867332103561662016
 CapsuleCollider:
   m_ObjectHideFlags: 0

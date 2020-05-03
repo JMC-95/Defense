@@ -19,8 +19,12 @@ public class CanonLocketSpawn : MonoBehaviour
     public float gravity;       //중력값
     public float v0;
 
+    public AudioClip canonShot;
+    AudioSource canonAudio;
+
     void Start()    //초기화
     {
+        canonAudio = GetComponent<AudioSource>();
         gravity = 50.0f;
         theta = 45f;
     }
@@ -64,6 +68,8 @@ public class CanonLocketSpawn : MonoBehaviour
                     aBolt.GetComponent<CanonLocket>().splashDamage = splashDamage;
 
                     aBolt.gameObject.SetActive(true);
+
+                    canonAudio.Play();
 
                     var fireEffect = EffectManager.instance.GetCanonFire();  //이펙트 생성
                     fireEffect.transform.position = this.transform.position + new Vector3(0,5,0);

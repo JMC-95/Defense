@@ -11,13 +11,15 @@ public class CanonBall : MonoBehaviour
     public Rigidbody canonRigidBody;
     public Vector3 velocity;
 
+ 
+
     public void SetVelocity(Vector3 _velocity)
     {
         velocity = _velocity;
     }
 
     private void Start()
-    {
+    {        
         canonRigidBody = GetComponent<Rigidbody>();
         gravity = 50.0f;
     }

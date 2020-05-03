@@ -89,10 +89,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5049466049486166995}
     m_Modifications:
-    - target: {fileID: 1734245126228380, guid: c246c13351c285146b91ea26d3e4cda7, type: 3}
-      propertyPath: m_Name
-      value: TB_ArcherTower_Arrow
-      objectReference: {fileID: 0}
     - target: {fileID: 4102569786528102, guid: c246c13351c285146b91ea26d3e4cda7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -137,6 +133,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1734245126228380, guid: c246c13351c285146b91ea26d3e4cda7, type: 3}
+      propertyPath: m_Name
+      value: TB_ArcherTower_Arrow
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c246c13351c285146b91ea26d3e4cda7, type: 3}
 --- !u!4 &3869138017898770101 stripped
@@ -152,11 +152,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5049466049486166995}
     m_Modifications:
-    - target: {fileID: 7513448561307674014, guid: 41c89807ed23a3646a7333bd4e40b119,
-        type: 3}
-      propertyPath: m_Name
-      value: ArrowWind
-      objectReference: {fileID: 0}
     - target: {fileID: 7515417651632714614, guid: 41c89807ed23a3646a7333bd4e40b119,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -211,6 +206,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513448561307674014, guid: 41c89807ed23a3646a7333bd4e40b119,
+        type: 3}
+      propertyPath: m_Name
+      value: ArrowWind
       objectReference: {fileID: 0}
     - target: {fileID: 7674478248932490702, guid: 41c89807ed23a3646a7333bd4e40b119,
         type: 3}
