@@ -26,7 +26,7 @@ namespace Type
 
         public static String GetTowerName(int towerType)
         {
-            if(towerType == Archerlv1)
+            if (towerType == Archerlv1)
                 return "ArcherTowerLV1";
             if (towerType == Archerlv2)
                 return "ArcherTowerLV2";
@@ -292,6 +292,25 @@ namespace Type
         }
     }
 
+    class Audio
+    {
+        public static int ArrowShot = 0;
+        public static int CannonShot = 1;
+        public static int CannonExplosion = 2;
+        public static int Max = CannonExplosion + 1;
+
+        public static string GetName(int type)
+        {
+            if (type == ArrowShot)
+                return "ArrowShot";
+            if (type == CannonShot)
+                return "CannonShot";
+            if (type == CannonExplosion)
+                return "CannonExplosion";
+
+            return null;
+        }
+    }
 
 
 }
