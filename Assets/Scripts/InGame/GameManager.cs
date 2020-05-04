@@ -14,6 +14,7 @@ public struct GenInfomation
         Speed = speed;
         Gold = gold;
     }
+
     public string EnemyName;
     public int Line;
     public int GenCount;
@@ -140,19 +141,19 @@ public class GameManager : MonoBehaviour
         tempDictionary3.Add(2, templist33);
         //3-4
         var templist34 = new List<GenInfomation>();
-        templist34.Add(new GenInfomation(Type.Enemy.EvilMage, Type.Line.Middle, 10, 250, 15, 40));
+        templist34.Add(new GenInfomation(Type.Enemy.EvilMage, Type.Line.Middle, 15, 250, 15, 40));
         templist34.Add(new GenInfomation(Type.Enemy.Orc, Type.Line.Left, 15, 250, 15, 45));
         tempDictionary3.Add(3, templist34);
         //3-5
         var templist35 = new List<GenInfomation>();
-        templist35.Add(new GenInfomation(Type.Enemy.Orc, Type.Line.Left, 7, 300, 15, 45));
-        templist35.Add(new GenInfomation(Type.Enemy.Golem, Type.Line.Right, 10, 400, 10, 50));
+        templist35.Add(new GenInfomation(Type.Enemy.Orc, Type.Line.Left, 15, 300, 15, 45));
+        templist35.Add(new GenInfomation(Type.Enemy.Golem, Type.Line.Right, 15, 400, 10, 50));
         tempDictionary3.Add(4, templist35);
         //3-6
         var templist36 = new List<GenInfomation>();
-        templist36.Add(new GenInfomation(Type.Enemy.EvilMage, Type.Line.Middle, 10, 250, 15, 40));
-        templist36.Add(new GenInfomation(Type.Enemy.Orc, Type.Line.Left, 7, 300, 15, 45));
-        templist36.Add(new GenInfomation(Type.Enemy.Golem, Type.Line.Right, 10, 400, 10, 50));
+        templist36.Add(new GenInfomation(Type.Enemy.EvilMage, Type.Line.Middle, 15, 250, 15, 40));
+        templist36.Add(new GenInfomation(Type.Enemy.Orc, Type.Line.Left, 15, 300, 15, 45));
+        templist36.Add(new GenInfomation(Type.Enemy.Golem, Type.Line.Right, 15, 400, 10, 50));
         tempDictionary3.Add(5, templist36);
         ret.Add(2, tempDictionary3);
 
