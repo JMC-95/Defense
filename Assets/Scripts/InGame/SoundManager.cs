@@ -8,10 +8,13 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip[] audioClips;
 
-
     public void PlaySound(int soundType, Vector3 position)
     {
+        AudioSource a = GetEmptySource();
 
+        a.loop = false;
+        a.clip = audioClips[soundType];
+        a.Play();
     }
 
     void Start()

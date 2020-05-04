@@ -294,19 +294,49 @@ namespace Type
 
     class Audio
     {
-        public static int ArrowShot = 0;
-        public static int CannonShot = 1;
-        public static int CannonExplosion = 2;
-        public static int Max = CannonExplosion + 1;
+        public static int ArrowHit = 0;
+        public static int ArrowShot = 1;
+        public static int bgm = 2;
+        public static int canonExplosion = 3;
+        public static int canonFire = 4;
+        public static int ClockTicTok = 5;
+        public static int Defeat_Narrator = 6;
+        public static int Defeat_Bgm = 7;
+        public static int FireArrowShot = 8;
+        public static int InGameBgm = 9;
+        public static int mageAttack = 10;
+        public static int MonsterDie = 11;
+        public static int VictoryBGM = 12;
+        public static int Max = VictoryBGM + 1;
 
         public static string GetName(int type)
         {
+            if (type == ArrowHit)
+                return "ArrowHit";
             if (type == ArrowShot)
                 return "ArrowShot";
-            if (type == CannonShot)
-                return "CannonShot";
-            if (type == CannonExplosion)
-                return "CannonExplosion";
+            if (type == bgm)
+                return "bgm";
+            if (type == canonExplosion)
+                return "canonExplosion";
+            if (type == canonFire)
+                return "canonFire";
+            if (type == ClockTicTok)
+                return "ClockTicTok";
+            if (type == Defeat_Narrator)
+                return "Defeat(Narrator)";
+            if (type == Defeat_Bgm)
+                return "DefeatBgm";
+            if (type == FireArrowShot)
+                return "FireArrowShot";
+            if (type == InGameBgm)
+                return "InGameBgm";
+            if (type == mageAttack)
+                return "mageAttack";
+            if (type == MonsterDie)
+                return "MonsterDie";
+            if (type == VictoryBGM)
+                return "VictoryBGM";
 
             return null;
         }
