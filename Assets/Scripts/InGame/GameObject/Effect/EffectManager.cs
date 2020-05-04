@@ -25,7 +25,8 @@ public class EffectManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+
+        //DontDestroyOnLoad(this.gameObject);
 
         CreatePooling();
     }

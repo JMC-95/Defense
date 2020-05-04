@@ -30,7 +30,8 @@ public class BulletManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+
+        //DontDestroyOnLoad(this.gameObject);
 
         CreatePooling();
     }

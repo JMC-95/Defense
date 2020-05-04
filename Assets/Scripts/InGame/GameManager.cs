@@ -258,18 +258,16 @@ public class GameManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(!SceneChanged)
+        if (!SceneChanged)
         {
             if (isGameOver)
             {
-                Debug.Log("Scene change");
-                SceneManager.LoadScene("DefeatScene");
+                SceneManager.LoadScene("DefeatScene", LoadSceneMode.Single);
                 SceneChanged = true;
             }
             if (isGameVictory)
             {
-                Debug.Log("Scene change");
-                SceneManager.LoadScene("VictoryScene");
+                SceneManager.LoadScene("VictoryScene", LoadSceneMode.Single);
                 SceneChanged = true;
             }
         }
