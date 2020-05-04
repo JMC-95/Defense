@@ -220,13 +220,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        //DontDestroyOnLoad(this.gameObject);
     }
 
     public void Start()
     {
-        Gold = 1000;
+        Gold = 500;
         SceneChanged = false;
         needRoundUpdate = false;
         isWaveEnd = true;
@@ -243,6 +241,7 @@ public class GameManager : MonoBehaviour
 
         enemySpawner = GameObject.Find("EnemySpawnGroup");
         enemySpawnerScript = enemySpawner.GetComponent<EnemySpawner>();
+
     }
 
     public void UseGold(int cost)

@@ -144,6 +144,7 @@ public class UiManager : MonoBehaviour
     {
         clock.SetActive(true);
         clock_needle.transform.rotation = new Quaternion(0, 0, 0, 0);
+        
     }
 
     public void UpdateClock()
@@ -160,6 +161,8 @@ public class UiManager : MonoBehaviour
         clock.SetActive(false);
     }
 
+    public float pastTime = 1.8f;
+    public float delay = 1.8f;
     public void Update()
     {
         
@@ -170,6 +173,16 @@ public class UiManager : MonoBehaviour
         else
         {
             roundStartButton.gameObject.SetActive(false);
+        }
+
+        if(clock.activeInHierarchy)
+        {
+            pastTime += Time.deltaTime;
+            if(pastTime > delay)
+            {
+                pastTime = 0.0f;
+                SoundManager.Instance.PlaySound(Type.Audio.ClockTicTok);
+            }
         }
     }
 

@@ -34,6 +34,7 @@ public class CanonLocket : MonoBehaviour
         {
             //포탄 삭제
             this.gameObject.SetActive(false);
+            SoundManager.Instance.PlaySound(Type.Audio.canonExplosion);
 
             //이펙트 생성
             var hitEffect = EffectManager.instance.GetCanonHit(); 

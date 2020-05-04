@@ -459,6 +459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810750082}
   - component: {fileID: 810750081}
+  - component: {fileID: 810750083}
   m_Layer: 0
   m_Name: Forest2
   m_TagString: Untagged
@@ -528,6 +529,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &810750083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810750080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee8f7a4a33de4f148b06534a22ba2819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips: []
+  audioSource: {fileID: 0}
 --- !u!1 &818764909
 GameObject:
   m_ObjectHideFlags: 0
@@ -5671,7 +5686,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1694192131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46c555e7f5a5c9b47929ae57c4088a36, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a986dc3c6327541861f80044e4801e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1694192133

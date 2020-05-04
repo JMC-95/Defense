@@ -33,7 +33,9 @@ public class ArrowSpawnTwoShooter : MonoBehaviour
                 if (fireTimeMin > fireTimeMax)
                 {
                     fireTimeMin = 0.0f;
-         
+
+                    SoundManager.Instance.PlaySound(Type.Audio.ArrowShot);
+
                     var arrowRight = BulletManager.instance.GetArrow();  //미사일 생성
                     if (arrowRight != null)
                     {

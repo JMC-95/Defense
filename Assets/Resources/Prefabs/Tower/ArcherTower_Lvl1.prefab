@@ -119,25 +119,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 30
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7090881004115994600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9176959993290046434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff9e0b6562ef71a4db4f66f862095f2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shooter: {fileID: 8926191423686138782}
-  firePos: {fileID: 8926191425579060734}
-  fireTimeMin: 0
-  fireTimeMax: 1
-  damage: 5
 --- !u!82 &3887466718599091485
 AudioSource:
   m_ObjectHideFlags: 0
@@ -234,6 +217,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7090881004115994600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9176959993290046434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff9e0b6562ef71a4db4f66f862095f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shooter: {fileID: 8926191423686138782}
+  firePos: {fileID: 8926191425579060734}
+  fireTimeMin: 0
+  fireTimeMax: 1
+  damage: 5
+  ArrowShot: {fileID: 0}
 --- !u!1001 &8926191425069530558
 PrefabInstance:
   m_ObjectHideFlags: 0

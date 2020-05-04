@@ -37,6 +37,8 @@ public class ArrowSpawnFireShot : MonoBehaviour
                         arrow.GetComponent<Arrow>().m_target = target;                  //미사일에게 타겟 전달
                         arrow.GetComponent<Arrow>().damage = damage;                  
                         arrow.SetActive(true);
+
+                        SoundManager.Instance.PlaySound(Type.Audio.FireArrowShot);
                     }  
                 }
             }
@@ -58,7 +60,10 @@ public class ArrowSpawnFireShot : MonoBehaviour
     private void OnTriggerEnter(Collider collision)         //사거리내에 들어온 enemy태그가 붙은 객체를 리스트에 추가
     {
         if (collision.tag == "ENEMY")
+        {
             collEnemys.Add(collision.gameObject);
+            SoundManager.Instance.PlaySound(Type.Audio.ArrowHit);
+        }
     }
 
     private void OnTriggerExit(Collider collision)          //사거리를 빠져나간 녀석은 리스트에서 지운다

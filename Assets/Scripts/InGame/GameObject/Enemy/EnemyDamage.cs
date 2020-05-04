@@ -46,6 +46,7 @@ public class EnemyDamage : MonoBehaviour
     {
         if(isDie == false)
         {
+            SoundManager.Instance.PlaySound(Type.Audio.MonsterDie);
             isDie = true;
             enemySpawnerScript.currEnemy -= 1;
             gameObject.GetComponent<EnemyAI>().state = EnemyAI.State.Die;

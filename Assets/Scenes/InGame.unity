@@ -2416,6 +2416,8 @@ MonoBehaviour:
   BossText: {fileID: 0}
   Lifes: []
   curLifeCount: 0
+  pastTime: 1.8
+  delay: 1.8
 --- !u!114 &610680861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2509,13 +2511,14 @@ MonoBehaviour:
   uiManagerScript: {fileID: 0}
   pastTime: 0
   waveDelay: 5
-  Gold: 1000
+  Gold: 500
   LifeCount: 10
   enemyType: 0
   waveCount: 0
   isWaveEnd: 0
   isGameOver: 0
   isGameVictory: 0
+  SceneChanged: 0
   enemyPrefabs: []
   bagicPath: Prefabs/Enemy/
   enemyStrList: []
@@ -2599,6 +2602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClips: []
+  audioSource: {fileID: 0}
 --- !u!4 &637019233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7c6849453a986974b9683393c325ade9,

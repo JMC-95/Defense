@@ -62,7 +62,7 @@ public class LazerSpawn : MonoBehaviour
 
                 //해당하는 오브젝트의 회전값을 닿은 면적의 노멀방향와 일치시킨다.
                 //RayResult.transform.rotation = Quaternion.LookRotation(hit.normal);
-
+                SoundManager.Instance.PlaySound(Type.Audio.mageAttack);
 
                 var enemyDamage = target.GetComponent<EnemyDamage>();
                 {

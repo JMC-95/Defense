@@ -40,6 +40,8 @@ public class ArrowSpawn : MonoBehaviour
                     var arrow = BulletManager.instance.GetArrow();  //미사일 생성
                     if (arrow != null)
                     {
+                        SoundManager.Instance.PlaySound(Type.Audio.FireArrowShot);
+
                         arrow.transform.position = firePos.position;                    //미사일 생성 포지션
                         arrow.transform.rotation = target.transform.rotation;           //미사일 생성 회전값
                         arrow.GetComponent<Arrow>().m_target = target;                  //미사일에게 타겟 전달

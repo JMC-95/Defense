@@ -27,7 +27,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 30
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7482657975032385813
 MonoBehaviour:
@@ -46,6 +46,7 @@ MonoBehaviour:
   fireTimeMin: 0
   fireTimeMax: 1
   damage: 20
+  ArrowShot: {fileID: 0}
 --- !u!1 &8926191423686138782
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,14 +146,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8926191424548647878}
     m_Modifications:
-    - target: {fileID: 1059502961608188, guid: 5dc256dae1ca2eb4eb02bc2f8b894a1b, type: 3}
-      propertyPath: m_Name
-      value: TB_ArcherTower_Lvl3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1059502961608188, guid: 5dc256dae1ca2eb4eb02bc2f8b894a1b, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 4525391403375980, guid: 5dc256dae1ca2eb4eb02bc2f8b894a1b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -196,6 +189,14 @@ PrefabInstance:
     - target: {fileID: 4525391403375980, guid: 5dc256dae1ca2eb4eb02bc2f8b894a1b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059502961608188, guid: 5dc256dae1ca2eb4eb02bc2f8b894a1b, type: 3}
+      propertyPath: m_Name
+      value: TB_ArcherTower_Lvl3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059502961608188, guid: 5dc256dae1ca2eb4eb02bc2f8b894a1b, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dc256dae1ca2eb4eb02bc2f8b894a1b, type: 3}
